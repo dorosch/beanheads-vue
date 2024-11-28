@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import Mask from './Mask.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
+
+defineProps<{
+  mask: boolean
+}>()
 
 const { skin } = useTheme();
 </script>
@@ -10,7 +15,10 @@ const { skin } = useTheme();
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1000 990"
   >
-    <g>
+    <Mask v-if="mask" id="mask" />
+    <g
+      :mask="mask ? 'url(#mask)' : undefined"
+    >
       <path
         d="M610,758.72c90.76,0,72,114.24,72.87,241.28H610Z"
         :fill="skin.base"
