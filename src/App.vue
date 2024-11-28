@@ -1,5 +1,7 @@
+<script setup lang="ts">
+import Base from './components/Base.vue'
+</script>
+
 <template>
-  <div>
-    Hello World
-  </div>
+  <Base width="300" height="300" />  
 </template>
