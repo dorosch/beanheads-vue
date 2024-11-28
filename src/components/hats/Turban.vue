@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { colors } from '@/constants/theme';
+import { computed } from 'vue';
 
 const props =withDefaults(defineProps<{
   position: 'front' | 'back'
@@ -10,7 +11,7 @@ const props =withDefaults(defineProps<{
 })
 
 const outline = colors.outline
-const { base, shadow } = computed(() => colors.clothing[props.color])
+const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
 </script>
 
 <template>

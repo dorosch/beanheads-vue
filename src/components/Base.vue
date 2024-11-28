@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import Mask from './Mask.vue';
 import BgCircle from './BgCircle.vue';
+import Hat from './hats/Hat.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
 
-defineProps<{
+withDefaults(defineProps<{
   mask: boolean
-}>()
+  hat?: 'none' | 'beanie' | 'turban',
+  hatColor?: keyof typeof colors.clothing
+}>(), {
+  hat: 'none',
+  hatColor: 'white'
+})
 
 const { skin } = useTheme();
 </script>
@@ -21,6 +27,9 @@ const { skin } = useTheme();
       :mask="mask ? 'url(#mask)' : undefined"
     >
       <BgCircle v-if="mask" />
+      
+      <Hat position="back" :hat="hat" :color="hatColor" :scale="1" />
+
       <path
         d="M610,758.72c90.76,0,72,114.24,72.87,241.28H610Z"
         :fill="skin.base"
@@ -103,6 +112,8 @@ const { skin } = useTheme();
         d="M626.74,870c-.19-4.17-.1-8.35.06-12.53s.47-8.35.85-12.53c.2-2.09.41-4.18.65-6.27s.49-4.17.85-6.26a55.09,55.09,0,0,1,3.59-12.53,55.09,55.09,0,0,1,3.59,12.53c.36,2.09.62,4.18.85,6.26s.45,4.18.65,6.27c.38,4.18.69,8.35.85,12.53s.25,8.36.06,12.53Z"
         :fill="colors.outline"
       />
+
+      <Hat position="front" :hat="hat" :color="hatColor" :scale="1" />
     </g>
   </svg>
 </template>

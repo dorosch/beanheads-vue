@@ -5,6 +5,7 @@ import Base from './components/Base.vue'
 <template>
   <Base 
     mask
+    hat="beanie"
     width="300" 
     height="300" 
   />  
