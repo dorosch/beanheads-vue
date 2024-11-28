@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Mask from './Mask.vue';
+import BgCircle from './BgCircle.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
 
@@ -19,6 +20,7 @@ const { skin } = useTheme();
     <g
       :mask="mask ? 'url(#mask)' : undefined"
     >
+      <BgCircle v-if="mask" />
       <path
         d="M610,758.72c90.76,0,72,114.24,72.87,241.28H610Z"
         :fill="skin.base"
