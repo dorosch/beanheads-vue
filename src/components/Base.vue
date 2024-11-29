@@ -6,8 +6,10 @@ import Body from './bodies/Body.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
 import Eye from './eyes/Eye.vue';
+import Clothing from './clothings/Clothing.vue';
+import { computed } from 'vue';
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   mask: boolean
   hat?: 'none' | 'beanie' | 'turban',
   hatColor?: keyof typeof colors.clothing,
@@ -15,9 +17,10 @@ withDefaults(defineProps<{
   color?: keyof typeof colors.clothing,
   position?: 'front' | 'back',
   braStraps?: boolean,
-  clothingColor?: keyof typeof colors.clothing,
   eye?: 'content-eyes' | 'heart-eyes' | 'dizzy-eyes' | 'happy-eyes' | 'left-twitch-eyes' | 'normal-eyes' | 'simple-eyes' | 'squint-eyes' | 'wink',
   withLashes?: boolean,
+  clothing?: 'none' | 'naked' | 'dress' | 'dress-shirt' | 'shirt' | 'tank-top' | 'v-neck',
+  clothingColor?: keyof typeof colors.clothing,
 }>(), {
   hat: 'none',
   hatColor: 'white',
@@ -28,9 +31,19 @@ withDefaults(defineProps<{
   clothingColor: 'white',
   eye: 'content-eyes',
   withLashes: false,
+  clothing: 'none',
 })
 
 const { skin } = useTheme();
+
+const needFrontClothing = computed(() => {
+  return props.clothing === 'dress'
+});
+
+const needBackClothing = computed(() => {
+  return props.clothing === 'dress' || props.clothing === 'shirt' || props.clothing === 'dress-shirt' || props.clothing === 'tank-top' || props.clothing === 'v-neck';
+});
+
 </script>
 
 <template>
@@ -128,6 +141,7 @@ const { skin } = useTheme();
         d="M626.74,870c-.19-4.17-.1-8.35.06-12.53s.47-8.35.85-12.53c.2-2.09.41-4.18.65-6.27s.49-4.17.85-6.26a55.09,55.09,0,0,1,3.59-12.53,55.09,55.09,0,0,1,3.59,12.53c.36,2.09.62,4.18.85,6.26s.45,4.18.65,6.27c.38,4.18.69,8.35.85,12.53s.25,8.36.06,12.53Z"
         :fill="colors.outline"
       />
+
       <Body
         :body="body"
         :color="clothingColor"
@@ -135,11 +149,22 @@ const { skin } = useTheme();
         :bra-straps="braStraps"
       />
 
+
+      <Clothing position="back" :clothing="clothing" :color="clothingColor" />
+
       <Body
+        v-if="needFrontClothing || needBackClothing"
         :body="body"
-        :color="clothingColor"
+        :color="clothing === 'dress-shirt' ? 'white' : clothingColor"
         position="front"
         :bra-straps="braStraps"
+      />
+
+      <Clothing
+        v-if="needFrontClothing"
+        position="front"
+        :clothing="clothing"
+        :color="clothingColor"
       />
 
       <Eye :eye="eye" :with-lashes="withLashes" />
