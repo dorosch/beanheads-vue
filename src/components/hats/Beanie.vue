@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
 
 const outline = colors.outline
 const white = colors.white
-const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
+const hatColor = computed(() => colors.clothing[props.color])
 </script>
 
 <template>
@@ -25,11 +25,11 @@ const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
       cx="491.44"
       cy="157.14"
       r="47.48"
-      :fill="base"
+      :fill="hatColor.base"
     />
     <path
       d="M491.44,204.62a47.47,47.47,0,0,0,46.46-57.31c-30.78-4.77-62.7-2-93.77,6-.1,1.26-.17,2.53-.17,3.82A47.48,47.48,0,0,0,491.44,204.62Z"
-      fill={shadow}
+      :fill="hatColor.shadow"
     />
     <circle
       cx="491.44"
@@ -42,15 +42,15 @@ const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
     />
     <path
       d="M240.26,423.13a254.67,254.67,0,0,1,6.54-57.5q1.29-5.55,2.81-11c2.9-32.3,20-58.94,42.86-82.73,4.76-3.81,5.71-12.37,10.47-17.13,16.18-14.27,30.45-28.55,48.53-40,74.22-47.58,172.23-73.27,251.21-29.5,16.17,8.56,34.25,13.32,47.57,24.74,25.7,21.88,43.77,47.58,69.47,68.51,22.83,19,26.64,49.48,34.74,76.07q1.53,5.44,2.81,11a254.67,254.67,0,0,1,6.54,57.5Z"
-      :fill="base"
+      :fill="hatColor.base"
     />
     <path
       d="M246.8,365.63a254.67,254.67,0,0,0-6.54,57.5h83C321.7,342.47,301,275.11,406,193,330.68,221.59,262.05,284.38,246.8,365.63Z"
-      :fill="shadow"
+      :fill="hatColor.shadow"
     />
     <path
       d="M258.18,321.12a109.41,109.41,0,0,0-8.57,33.51q-1.52,5.44-2.81,11a254.67,254.67,0,0,0-6.54,57.5H440.31a827.17,827.17,0,0,1,127.59,0H763.81a254.67,254.67,0,0,0-6.54-57.5q-1.29-5.55-2.81-11c-3.46-11.37-6.15-23.44-9.86-35C582.71,259.73,419,261,258.18,321.12Z"
-      :fill="shadow"
+      :fill="hatColor.shadow"
     />
     <path
       d="M240.26,423.13a254.67,254.67,0,0,1,6.54-57.5q1.29-5.55,2.81-11c2.9-32.3,20-58.94,42.86-82.73,4.76-3.81,5.71-12.37,10.47-17.13,16.18-14.27,30.45-28.55,48.53-40,74.22-47.58,172.23-73.27,251.21-29.5,16.17,8.56,34.25,13.32,47.57,24.74,25.7,21.88,43.77,47.58,69.47,68.51,22.83,19,26.64,49.48,34.74,76.07q1.53,5.44,2.81,11a254.67,254.67,0,0,1,6.54,57.5Z"
@@ -61,7 +61,7 @@ const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
     />
     <path
       d="M225.35,356.43c183.42-78,371.14-79.06,555.94,0,17.53,7.5,17.43,139.87,0,133.81-180.47-62.83-371.33-63.5-555.94,0C203.39,497.79,205.53,364.86,225.35,356.43Z"
-      :fill="base"
+      :fill="hatColor.base"
     />
     <path
       d="M751.33,443.71a43.58,43.58,0,0,1,1.35,9.9c.09,3.27-.11,6.52-.26,9.78l-.36,4.87c-.16,1.62-.32,3.24-.52,4.85-.4,3.23-.89,6.44-1.59,9.61l-7.87-1.41c.44-3.17,1-6.31,1.64-9.45l1-4.71,1-4.7c.74-3.13,1.37-6.27,2.22-9.4A53.94,53.94,0,0,1,751.33,443.71Z"
@@ -129,56 +129,56 @@ const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
     <path
       d="M758.28,341.38c10,42.84,8.85,89.43,0,138.64"
       fill="none"
-      :stroke="shadow"
+      :stroke="hatColor.shadow"
       stroke-miterlimit="10"
       stroke-width="8px"
     />
     <path
       d="M681,320c7.56,42.87,6.71,89.49,0,138.74"
       fill="none"
-      :stroke="shadow"
+      :stroke="hatColor.shadow"
       stroke-miterlimit="10"
       stroke-width="8px"
     />
     <path
       d="M610.38,305.45c5.15,42.9,4.57,89.55,0,138.83"
       fill="none"
-      :stroke="shadow"
+      :stroke="hatColor.shadow"
       stroke-miterlimit="10"
       stroke-width="8px"
     />
     <path
       d="M544.06,297.82c2.74,42.92,2.44,89.61,0,138.92"
       fill="none"
-      :stroke="shadow"
+      :stroke="hatColor.shadow"
       stroke-miterlimit="10"
       stroke-width="8px"
     />
     <path
       d="M479.8,297.16c.34,42.95.31,89.67,0,139"
       fill="none"
-      :stroke="shadow"
+      :stroke="hatColor.shadow"
       stroke-miterlimit="10"
       stroke-width="8px"
     />
     <path
       d="M415.34,303.53c-2.06,43-1.83,89.73,0,139.11"
       fill="none"
-      :stroke="shadow"
+      :stroke="hatColor.shadow"
       stroke-miterlimit="10"
       stroke-width="8px"
     />
     <path
       d="M348.41,317c-4.46,43-4,89.79,0,139.21"
       fill="none"
-      :stroke="shadow"
+      :stroke="hatColor.shadow"
       stroke-miterlimit="10"
       stroke-width="8px"
     />
     <path
       d="M276.74,337.64c-6.86,43-6.09,89.85,0,139.3"
       fill="none"
-      :stroke="shadow"
+      :stroke="hatColor.shadow"
       stroke-miterlimit="10"
       stroke-width="8px"
     />

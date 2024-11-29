@@ -12,7 +12,7 @@ const props = defineProps<{
 const { skin } = useTheme();
 
 const outline = colors.outline
-const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
+const clothingColor = computed(() => colors.clothing[props.color])
 </script>
 
 <template>
@@ -37,10 +37,10 @@ const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
       :opacity="0.5"
     /> -->
 
-    <!-- <path
+    <path
       d="M407,943.81A69.33,69.33,0,0,1,380.42,831.7"
-      :fill="base"
-    /> -->
+      :fill="clothingColor.base"
+    />
     <path
       d="M407,943.81a57.14,57.14,0,0,1-31.21-16l-1.62-1.6c-.53-.54-1-1.13-1.53-1.69s-1-1.15-1.48-1.73a22,22,0,0,1-1.43-1.79c-.9-1.23-1.81-2.46-2.68-3.72l-2.37-3.93a69,69,0,0,1-6.71-17.13,70.52,70.52,0,0,1-1.69-18.3,64.09,64.09,0,0,1,3.4-17.93c.26-.71.49-1.43.76-2.14l.88-2.1c.55-1.4,1.26-2.74,1.91-4.09a60.79,60.79,0,0,1,4.74-7.63c.85-1.21,1.82-2.35,2.75-3.49s1.94-2.23,3-3.23a47.65,47.65,0,0,1,6.73-5.59c-5.79,10-9.9,20.19-11.66,30.67A78.09,78.09,0,0,0,367.61,878a84.63,84.63,0,0,0,2,15.41,80.81,80.81,0,0,0,5.12,14.65,76.2,76.2,0,0,0,8.08,13.47,79,79,0,0,0,10.81,11.95A115,115,0,0,0,407,943.81Z"
       :fill="outline"
@@ -113,14 +113,14 @@ const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
     </template>
     <path
       d="M470.5,897.78h53.9v19.7c-17.74-6.05-35.71-5.9-53.9,0Z"
-      :fill="base"
+      :fill="clothingColor.base"
       :stroke="outline"
       stroke-miterlimit="10"
       stroke-width="12px"
     />
     <path
       d="M638.1,878.86a69.06,69.06,0,0,0-18.63-47.28c-4.22-4.52-44.27,6.19-67.81,27.26-23.11,20.69-43.23,54.49-40.35,58.75A69.31,69.31,0,0,0,638.1,878.86Z"
-      :fill="base"
+      :fill="clothingColor.base"
       :stroke="outline"
       stroke-miterlimit="10"
       stroke-width="12px"
@@ -131,14 +131,14 @@ const { value: { base, shadow } } = computed(() => colors.clothing[props.color])
     />
     <path
       d="M361.9,878.86a69.06,69.06,0,0,1,18.63-47.28c4.22-4.52,44.27,6.19,67.81,27.26,23.11,20.69,43.23,54.49,40.35,58.75A69.31,69.31,0,0,1,361.9,878.86Z"
-      :fill="base"
+      :fill="clothingColor.shadow"
       :stroke="outline"
       stroke-miterlimit="10"
       stroke-width="12px"
     />
     <path
       d="M455.75,938.92a85.36,85.36,0,0,1-85.36-85.36,86.38,86.38,0,0,1,.44-8.71,69.31,69.31,0,0,0,96.31,93.29A85.67,85.67,0,0,1,455.75,938.92Z"
-      :fill="shadow"
+      :fill="clothingColor.shadow"
     />
     <path
       d="M361.9,878.86a69.06,69.06,0,0,1,18.63-47.28c4.22-4.52,44.27,6.19,67.81,27.26,23.11,20.69,43.23,54.49,40.35,58.75A69.31,69.31,0,0,1,361.9,878.86Z"
