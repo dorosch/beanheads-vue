@@ -9,5 +9,7 @@ import Base from './components/Base.vue'
     width="300" 
     height="300" 
     clothing-color="black"
+    eye="wink"
+    with-lashes
   />  
 </template>

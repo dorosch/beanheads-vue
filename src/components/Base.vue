@@ -5,6 +5,7 @@ import Hat from './hats/Hat.vue';
 import Body from './bodies/Body.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
+import Eye from './eyes/Eye.vue';
 
 withDefaults(defineProps<{
   mask: boolean
@@ -15,6 +16,8 @@ withDefaults(defineProps<{
   position?: 'front' | 'back',
   braStraps?: boolean,
   clothingColor?: keyof typeof colors.clothing,
+  eye?: 'content-eyes' | 'heart-eyes' | 'dizzy-eyes' | 'happy-eyes' | 'left-twitch-eyes' | 'normal-eyes' | 'simple-eyes' | 'squint-eyes' | 'wink',
+  withLashes?: boolean,
 }>(), {
   hat: 'none',
   hatColor: 'white',
@@ -23,6 +26,8 @@ withDefaults(defineProps<{
   position: 'front',
   braStraps: true,
   clothingColor: 'white',
+  eye: 'content-eyes',
+  withLashes: false,
 })
 
 const { skin } = useTheme();
@@ -136,6 +141,8 @@ const { skin } = useTheme();
         position="front"
         :bra-straps="braStraps"
       />
+
+      <Eye :eye="eye" :with-lashes="withLashes" />
       
       <Hat position="front" :hat="hat" :color="hatColor" :scale="1" />
     </g>
