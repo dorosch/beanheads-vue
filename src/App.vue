@@ -14,5 +14,7 @@ import Base from './components/Base.vue'
     body="breasts"
     clothing="v-neck"
     clothing-color="green"
+    mouth="tongue"
+
   />  
 </template>

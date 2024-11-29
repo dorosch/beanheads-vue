@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import Mask from './Mask.vue';
 import BgCircle from './BgCircle.vue';
 import Hat from './hats/Hat.vue';
@@ -7,7 +8,7 @@ import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
 import Eye from './eyes/Eye.vue';
 import Clothing from './clothings/Clothing.vue';
-import { computed } from 'vue';
+import Mouth from './mouths/Mouth.vue';
 
 const props = withDefaults(defineProps<{
   mask: boolean
@@ -21,6 +22,9 @@ const props = withDefaults(defineProps<{
   withLashes?: boolean,
   clothing?: 'none' | 'naked' | 'dress' | 'dress-shirt' | 'shirt' | 'tank-top' | 'v-neck',
   clothingColor?: keyof typeof colors.clothing,
+
+  lipColor?: keyof typeof colors.lipColors,
+  mouth?: 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue',
 }>(), {
   hat: 'none',
   hatColor: 'white',
@@ -32,6 +36,8 @@ const props = withDefaults(defineProps<{
   eye: 'content-eyes',
   withLashes: false,
   clothing: 'none',
+  lipColor: 'red',
+  mouth: 'grin',
 })
 
 const { skin } = useTheme();
@@ -168,6 +174,8 @@ const needBackClothing = computed(() => {
       />
 
       <Eye :eye="eye" :with-lashes="withLashes" />
+
+      <Mouth :mouth="mouth" :color="lipColor" />
       
       <Hat position="front" :hat="hat" :color="hatColor" :scale="1" />
     </g>
