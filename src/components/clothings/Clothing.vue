@@ -34,5 +34,9 @@ const clothingComponent = computed(() => ({
     :is="clothingComponent"
     :color="color"
     :position="position"
-  />
+  >
+    <template #graphic>
+      <slot name="graphic"/>
+    </template>
+  </component>
 </template>

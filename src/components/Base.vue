@@ -13,6 +13,7 @@ import Accessory from './accessories/Accessory.vue';
 import Hair from './hairs/Hair.vue';
 import Eyebrows from './eyebrows/Eyebrows.vue';
 import FacialHair from './facialHairs/FacialHair.vue';
+import ClothingGraphic from './clothingGraphics/ClothingGraphic.vue';
 
 const props = withDefaults(defineProps<{
   mask: boolean
@@ -36,6 +37,9 @@ const props = withDefaults(defineProps<{
 
   eyebrows?: 'none' | 'normal' | 'serious' | 'left-lowered' | 'angry' | 'concerned',
   facialHair?: 'none' | 'stubble' | 'medium-beard',
+
+  clothingGraphic?: 'none' | 'redwood' | 'vue' | 'react' | 'gatsby' | 'graphql',
+
 }>(), {
   hat: 'none',
   hatColor: 'white',
@@ -54,6 +58,7 @@ const props = withDefaults(defineProps<{
   hairColor: 'white',
   eyebrows: 'normal',
   facialHair: 'none',
+  clothingGraphic: 'none',
 })
 
 const { skin } = useTheme();
@@ -192,7 +197,13 @@ const hatScale = computed(() => {
         :bra-straps="braStraps"
       />
 
-      <Clothing position="back" :clothing="clothing" :color="clothingColor" />
+      <Clothing 
+        position="back" :clothing="clothing" :color="clothingColor"
+      >
+        <template #graphic>
+          <ClothingGraphic :clothing-graphic="clothingGraphic" />
+        </template>
+      </Clothing>
 
       <Body
         v-if="needFrontClothing || needBackClothing"
