@@ -10,6 +10,7 @@ import Eye from './eyes/Eye.vue';
 import Clothing from './clothings/Clothing.vue';
 import Mouth from './mouths/Mouth.vue';
 import Accessory from './accessories/Accessory.vue';
+import Hair from './hairs/Hair.vue';
 
 const props = withDefaults(defineProps<{
   mask: boolean
@@ -27,6 +28,9 @@ const props = withDefaults(defineProps<{
   lipColor?: keyof typeof colors.lipColors,
   mouth?: 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue',
   accessory?: 'none' | 'round-glasses' | 'tiny-glasses' | 'shades',
+
+  hair?: 'none' | 'afro' | 'balding' | 'bob' | 'bun' | 'buzz' | 'long' | 'pixie' | 'short',
+  hairColor?: keyof typeof colors.hair,
 }>(), {
   hat: 'none',
   hatColor: 'white',
@@ -41,6 +45,8 @@ const props = withDefaults(defineProps<{
   lipColor: 'red',
   mouth: 'grin',
   accessory: 'none',
+  hair: 'none',
+  hairColor: 'white',
 })
 
 const { skin } = useTheme();
@@ -52,6 +58,20 @@ const needFrontClothing = computed(() => {
 const needBackClothing = computed(() => {
   return props.clothing === 'dress' || props.clothing === 'shirt' || props.clothing === 'dress-shirt' || props.clothing === 'tank-top' || props.clothing === 'v-neck';
 });
+
+const hatScale = computed(() => {
+  return {
+    bob: 1.12,
+    afro: 0,
+    balding: 0,
+    none: 1,
+    bun: 1,
+    buzz: 1,
+    long: 1.12,
+    pixie: 1,
+    short: 1,
+  }[props.hair] ?? 0
+})
 
 </script>
 
@@ -66,7 +86,14 @@ const needBackClothing = computed(() => {
     >
       <BgCircle v-if="mask" />
       
-      <Hat position="back" :hat="hat" :color="hatColor" :scale="1" />
+      <Hat position="back" :hat="hat" :color="hatColor" :scale="hatScale" />
+
+      <Hair
+        position="back" 
+        :hair="hair" 
+        :color="hairColor" 
+        :hasHat="hatScale > 0"
+      />
 
       <path
         d="M610,758.72c90.76,0,72,114.24,72.87,241.28H610Z"
@@ -109,7 +136,7 @@ const needBackClothing = computed(() => {
       />
       <path
         d="M610,758.72c90.76,0,72,114.24,72.87,241.28H632.74"
-        fill="none"
+        fill="none" 
         :stroke="colors.outline"
         stroke-linecap="square"
         :stroke-miterlimit="10"
@@ -179,8 +206,14 @@ const needBackClothing = computed(() => {
       <Eye :eye="eye" :with-lashes="withLashes" />
 
       <Mouth :mouth="mouth" :color="lipColor" />
-      
-      <Hat position="front" :hat="hat" :color="hatColor" :scale="1" />
+      <Hair
+        position="front"
+        :hair="hair"
+        :color="hairColor"
+        :hasHat="hatScale > 0"
+      />
+
+      <Hat position="front" :hat="hat" :color="hatColor" :scale="hatScale" />
 
       <Accessory :accessory="accessory" />
     </g>

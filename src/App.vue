@@ -5,7 +5,7 @@ import Base from './components/Base.vue'
 <template>
   <Base 
     mask
-    hat="beanie"
+    hat="turban"
     hat-color="red"
     width="300" 
     height="300" 
@@ -16,5 +16,7 @@ import Base from './components/Base.vue'
     clothing-color="green"
     mouth="tongue"
     accessory="none"
+    hair="short"
+    hair-color="brown"
   />  
 </template>
