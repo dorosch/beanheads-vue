@@ -17,7 +17,7 @@ import ClothingGraphic from './clothingGraphics/ClothingGraphic.vue';
 import FaceMask from './FaceMask.vue';
 
 const props = withDefaults(defineProps<{
-  mask: boolean
+  mask?: boolean
   hat?: 'none' | 'beanie' | 'turban',
   hatColor?: keyof typeof colors.clothing,
   body?: 'breasts' | 'chest',
@@ -45,6 +45,7 @@ const props = withDefaults(defineProps<{
   faceMaskColor?: keyof typeof colors.clothing,
 
 }>(), {
+  mask: false,
   hat: 'none',
   hatColor: 'white',
   body: 'chest',
