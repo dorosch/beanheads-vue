@@ -11,6 +11,7 @@ import Clothing from './clothings/Clothing.vue';
 import Mouth from './mouths/Mouth.vue';
 import Accessory from './accessories/Accessory.vue';
 import Hair from './hairs/Hair.vue';
+import Eyebrows from './eyebrows/Eyebrows.vue';
 
 const props = withDefaults(defineProps<{
   mask: boolean
@@ -31,6 +32,8 @@ const props = withDefaults(defineProps<{
 
   hair?: 'none' | 'afro' | 'balding' | 'bob' | 'bun' | 'buzz' | 'long' | 'pixie' | 'short',
   hairColor?: keyof typeof colors.hair,
+
+  eyebrows?: 'none' | 'normal' | 'serious' | 'left-lowered' | 'angry' | 'concerned'
 }>(), {
   hat: 'none',
   hatColor: 'white',
@@ -47,6 +50,7 @@ const props = withDefaults(defineProps<{
   accessory: 'none',
   hair: 'none',
   hairColor: 'white',
+  eyebrows: 'normal',
 })
 
 const { skin } = useTheme();
@@ -213,6 +217,7 @@ const hatScale = computed(() => {
         :hasHat="hatScale > 0"
       />
 
+      <Eyebrows :eyebrows="eyebrows" />
       <Hat position="front" :hat="hat" :color="hatColor" :scale="hatScale" />
 
       <Accessory :accessory="accessory" />
