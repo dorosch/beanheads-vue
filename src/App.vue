@@ -15,6 +15,6 @@ import Base from './components/Base.vue'
     clothing="v-neck"
     clothing-color="green"
     mouth="tongue"
-
+    accessory="none"
   />  
 </template>

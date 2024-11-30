@@ -9,6 +9,7 @@ import { useTheme } from '@/composables/useTheme';
 import Eye from './eyes/Eye.vue';
 import Clothing from './clothings/Clothing.vue';
 import Mouth from './mouths/Mouth.vue';
+import Accessory from './accessories/Accessory.vue';
 
 const props = withDefaults(defineProps<{
   mask: boolean
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<{
 
   lipColor?: keyof typeof colors.lipColors,
   mouth?: 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue',
+  accessory?: 'none' | 'round-glasses' | 'tiny-glasses' | 'shades',
 }>(), {
   hat: 'none',
   hatColor: 'white',
@@ -38,6 +40,7 @@ const props = withDefaults(defineProps<{
   clothing: 'none',
   lipColor: 'red',
   mouth: 'grin',
+  accessory: 'none',
 })
 
 const { skin } = useTheme();
@@ -178,6 +181,8 @@ const needBackClothing = computed(() => {
       <Mouth :mouth="mouth" :color="lipColor" />
       
       <Hat position="front" :hat="hat" :color="hatColor" :scale="1" />
+
+      <Accessory :accessory="accessory" />
     </g>
   </svg>
 </template>
