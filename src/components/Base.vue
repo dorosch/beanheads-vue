@@ -9,7 +9,7 @@ import { useTheme } from '@/composables/useTheme';
 import Eye from './eyes/Eye.vue';
 import Clothing from './clothings/Clothing.vue';
 import Mouth from './mouths/Mouth.vue';
-import Accessory from './accessories/Accessory.vue';
+import Accessory, { type AccessoryType } from './accessories/Accessory.vue';
 import Hair from './hairs/Hair.vue';
 import Eyebrows from './eyebrows/Eyebrows.vue';
 import FacialHair from './facialHairs/FacialHair.vue';
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<{
 
   lipColor?: keyof typeof colors.lipColors,
   mouth?: 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue',
-  accessory?: 'none' | 'round-glasses' | 'tiny-glasses' | 'shades',
+  accessory?: 'none' | AccessoryType,
 
   hair?: 'none' | 'afro' | 'balding' | 'bob' | 'bun' | 'buzz' | 'long' | 'pixie' | 'short',
   hairColor?: keyof typeof colors.hair,
@@ -252,7 +252,10 @@ const hatScale = computed(() => {
       <Eyebrows :eyebrows="eyebrows" />
       <Hat position="front" :hat="hat" :color="hatColor" :scale="hatScale" />
 
-      <Accessory :accessory="accessory" />
+      <Accessory 
+        v-if="accessory !== 'none'"
+        :type="accessory"
+      />
     </g>
   </svg>
 </template>

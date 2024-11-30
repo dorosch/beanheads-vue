@@ -4,8 +4,10 @@ import RoundGlasses from './RoundGlasses.vue';
 import TinyGlasses from './TinyGlasses.vue';
 import Shades from './Shades.vue';
 
+export type AccessoryType = 'round-glasses' | 'tiny-glasses' | 'shades';
+
 const props = defineProps<{
-  accessory: 'none'|'round-glasses' | 'tiny-glasses' | 'shades';
+  type: AccessoryType;
 }>();
 
 const accessoryComponent = computed(() => {
@@ -13,14 +15,10 @@ const accessoryComponent = computed(() => {
     'round-glasses': RoundGlasses,
     'tiny-glasses': TinyGlasses,
     'shades': Shades,
-    'none': null,
-  }[props.accessory];
+  }[props.type];
 });
 </script>
 
 <template>
-  <component 
-    v-if="accessoryComponent"
-    :is="accessoryComponent"
-  />
+  <component :is="accessoryComponent"/>
 </template>
