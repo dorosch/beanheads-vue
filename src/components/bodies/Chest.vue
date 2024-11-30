@@ -2,25 +2,29 @@
 import { useTheme } from '@/composables/useTheme';
 import { colors } from '@/constants/theme';
 
-const outline = colors.outline
+defineOptions({
+  inheritAttrs: false,
+})
 
 defineProps<{
   position: 'front' | 'back',
-  // color: keyof typeof colors.skin,
 }>()
 
 const { skin } = useTheme();
 </script>
 
 <template>
+  <template v-if="position === 'front'">
+    <!-- Nothing here -->
+  </template>
   <template v-if="position === 'back'">
     <path
       d="M570.68,842.45C570.9,833,582.9,829,588.9,835a10.61,10.61,0,1,1-15.16,14.85A10.4,10.4,0,0,1,570.68,842.45Z"
-      :fill="outline"
+      :fill="colors.outline"
     />
     <path
       d="M408.11,842.15C407.9,834,416.9,830,422.9,833c8,3,8,14,0,19-4,2-8,0-11.75-2.48A10.39,10.39,0,0,1,408.11,842.15Z"
-      :fill="outline"
+      :fill="colors.outline"
     />
     <path
       d="M500,831.77a27.13,27.13,0,0,1,1.5,5.84,42.47,42.47,0,0,1,.49,5.84l.3,11.69c.09,3.89.21,7.79.25,11.69l.17,11.67c.23,15.57.22,31.16.28,46.74s.18,31.16,0,46.74c-.09,7.79-.3,15.58-.53,23.37-.1,3.89-.29,7.79-.67,11.68a92.5,92.5,0,0,1-1.77,11.69,92.5,92.5,0,0,1-1.77-11.69c-.38-3.89-.57-7.79-.67-11.68-.23-7.79-.44-15.58-.53-23.37-.2-15.58,0-31.16,0-46.74s0-31.15.18-46.73l.17-11.7.33-11.68.33-11.68a44.11,44.11,0,0,1,.5-5.84A27.13,27.13,0,0,1,500,831.77Z"

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import Mask from './Mask.vue';
 import BgCircle from './BgCircle.vue';
 import Hat from './hats/Hat.vue';
-import Body from './bodies/Body.vue';
+import Body, { type BodyType } from './bodies/Body.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
 import Eye from './eyes/Eye.vue';
@@ -18,9 +18,9 @@ import FaceMask from './FaceMask.vue';
 
 const props = withDefaults(defineProps<{
   mask?: boolean
+  body?: BodyType,
   hat?: 'none' | 'beanie' | 'turban',
   hatColor?: keyof typeof colors.clothing,
-  body?: 'breasts' | 'chest',
   color?: keyof typeof colors.clothing,
   position?: 'front' | 'back',
   braStraps?: boolean,
@@ -46,9 +46,9 @@ const props = withDefaults(defineProps<{
 
 }>(), {
   mask: false,
+  body: 'chest',
   hat: 'none',
   hatColor: 'white',
-  body: 'chest',
   color: 'white',
   position: 'front',
   braStraps: true,
@@ -198,7 +198,7 @@ const hatScale = computed(() => {
       />
 
       <Body
-        :body="body"
+        :type="body"
         :color="clothingColor"
         position="back"
         :bra-straps="braStraps"
@@ -214,7 +214,7 @@ const hatScale = computed(() => {
 
       <Body
         v-if="needFrontClothing || needBackClothing"
-        :body="body"
+        :type="body"
         :color="clothing === 'dress-shirt' ? 'white' : clothingColor"
         position="front"
         :bra-straps="braStraps"
