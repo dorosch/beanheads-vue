@@ -19,7 +19,9 @@ import Base from './components/Base.vue'
     hair="short"
     hair-color="brown"
     eyebrows="angry"
-    facial-hair="stubble"
+    facial-hair="medium-beard"
     clothing-graphic="vue"
+    face-mask
+    face-mask-color="red"
   />  
 </template>

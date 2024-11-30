@@ -14,6 +14,7 @@ import Hair from './hairs/Hair.vue';
 import Eyebrows from './eyebrows/Eyebrows.vue';
 import FacialHair from './facialHairs/FacialHair.vue';
 import ClothingGraphic from './clothingGraphics/ClothingGraphic.vue';
+import FaceMask from './FaceMask.vue';
 
 const props = withDefaults(defineProps<{
   mask: boolean
@@ -40,6 +41,9 @@ const props = withDefaults(defineProps<{
 
   clothingGraphic?: 'none' | 'redwood' | 'vue' | 'react' | 'gatsby' | 'graphql',
 
+  faceMask?: boolean,
+  faceMaskColor?: keyof typeof colors.clothing,
+
 }>(), {
   hat: 'none',
   hatColor: 'white',
@@ -59,6 +63,8 @@ const props = withDefaults(defineProps<{
   eyebrows: 'normal',
   facialHair: 'none',
   clothingGraphic: 'none',
+  faceMask: false,
+  faceMaskColor: 'white',
 })
 
 const { skin } = useTheme();
@@ -220,11 +226,21 @@ const hatScale = computed(() => {
         :color="clothingColor"
       />
 
-      <FacialHair :type="facialHair" :color="hairColor" />
+      <FacialHair 
+        v-if="!faceMask"
+        :type="facialHair" 
+        :color="hairColor" 
+      />
 
       <Eye :eye="eye" :with-lashes="withLashes" />
 
       <Mouth :mouth="mouth" :color="lipColor" />
+
+      <FaceMask 
+        v-if="faceMask" 
+        :color="faceMaskColor" 
+      />
+
       <Hair
         position="front"
         :hair="hair"
