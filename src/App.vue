@@ -19,5 +19,6 @@ import Base from './components/Base.vue'
     hair="short"
     hair-color="brown"
     eyebrows="angry"
+    facial-hair="stubble"
   />  
 </template>
