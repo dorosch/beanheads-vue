@@ -13,7 +13,7 @@ import Accessory, { type AccessoryType } from './accessories/Accessory.vue';
 import Hair from './hairs/Hair.vue';
 import Eyebrows from './eyebrows/Eyebrows.vue';
 import FacialHair from './facialHairs/FacialHair.vue';
-import ClothingGraphic from './clothingGraphics/ClothingGraphic.vue';
+import ClothingGraphic, { type ClothingGraphicType } from './clothingGraphics/ClothingGraphic.vue';
 import FaceMask from './FaceMask.vue';
 
 const props = withDefaults(defineProps<{
@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<{
   eyebrows?: 'none' | 'normal' | 'serious' | 'left-lowered' | 'angry' | 'concerned',
   facialHair?: 'none' | 'stubble' | 'medium-beard',
 
-  clothingGraphic?: 'none' | 'redwood' | 'vue' | 'react' | 'gatsby' | 'graphql',
+  clothingGraphic?: 'none' | ClothingGraphicType,
 
   faceMask?: boolean,
   faceMaskColor?: keyof typeof colors.clothing,
@@ -208,7 +208,7 @@ const hatScale = computed(() => {
         position="back" :clothing="clothing" :color="clothingColor"
       >
         <template #graphic>
-          <ClothingGraphic :clothing-graphic="clothingGraphic" />
+          <ClothingGraphic v-if="clothingGraphic !== 'none'" :type="clothingGraphic" />
         </template>
       </Clothing>
 

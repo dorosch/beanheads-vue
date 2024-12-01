@@ -6,22 +6,23 @@ import React from './React.vue';
 import Gatsby from './Gatsby.vue';
 import GraphQL from './GraphQL.vue';
 
+export type ClothingGraphicType = 'redwood' | 'vue' | 'react' | 'gatsby' | 'graphql';
+
 const props = defineProps<{
-  clothingGraphic: 'none' | 'redwood' | 'vue' | 'react' | 'gatsby' | 'graphql';
+  type: ClothingGraphicType
 }>();
 
 const clothingGraphicComponent = computed(() => {
   return {
-    'none': null,
     'redwood': Redwood,
     'vue': Vue,
     'react': React,
     'gatsby': Gatsby,
     'graphql': GraphQL,
-  }[props.clothingGraphic];
+  }[props.type];
 });
 </script>
 
 <template>
-  <component v-if="clothingGraphicComponent" :is="clothingGraphicComponent" />
+  <component :is="clothingGraphicComponent" />
 </template>
