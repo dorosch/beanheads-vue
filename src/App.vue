@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Base from './components/Base.vue'
+import Avatar from './components/Avatar.vue'
 </script>
 
 <template>
-  <Base 
+  <Avatar 
     mask
     hat-color="red"
     width="300" 
