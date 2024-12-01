@@ -12,7 +12,7 @@ import Base from './components/Base.vue'
     eye="wink"
     with-lashes
     body="breasts"
-    clothing="dress"
+    clothing="dress-shirt"
     clothing-color="green"
     mouth="tongue"
     accessory="none"

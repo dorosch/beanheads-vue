@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<{
 
   lipColor?: keyof typeof colors.lipColors,
   mouth?: 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue',
-  accessory?: 'none' | AccessoryType,
+  accessory?: AccessoryType,
 
   hair?: 'none' | 'afro' | 'balding' | 'bob' | 'bun' | 'buzz' | 'long' | 'pixie' | 'short',
   hairColor?: keyof typeof colors.hair,
@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<{
   eyebrows?: 'none' | 'normal' | 'serious' | 'left-lowered' | 'angry' | 'concerned',
   facialHair?: 'none' | 'stubble' | 'medium-beard',
 
-  clothingGraphic?: 'none' | ClothingGraphicType,
+  clothingGraphic?: ClothingGraphicType,
 
   faceMask?: boolean,
   faceMaskColor?: keyof typeof colors.clothing,
@@ -211,7 +211,6 @@ const hatScale = computed(() => {
       >
         <template #graphic>
           <ClothingGraphic 
-            v-if="clothingGraphic !== 'none'" 
             :type="clothingGraphic" 
           />
         </template>
@@ -258,7 +257,6 @@ const hatScale = computed(() => {
       <Hat position="front" :hat="hat" :color="hatColor" :scale="hatScale" />
 
       <Accessory 
-        v-if="accessory !== 'none'"
         :type="accessory"
       />
     </g>
