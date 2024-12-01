@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { colors } from '@/constants/theme';
-
-const outline = colors.outline;
-const white = colors.white;
 </script>
 
 <template>
@@ -12,58 +9,58 @@ const white = colors.white;
   />
   <path
     d="M233.59,469.82s.41,32.23.41,50.2c0,64.41,40.48,116.63,104.9,116.63A116.68,116.68,0,0,0,444.2,469.82Z"
-    :fill="outline"
+    :fill="colors.outline"
     :opacity="0.95"
   />
   <path
     d="M553.91,469.82a116.68,116.68,0,0,0,105.3,166.83c64.42,0,107.54-52.22,107.54-116.63,0-18-2.23-50.2-2.23-50.2Z"
-    :fill="outline"
+    :fill="colors.outline"
     :opacity="0.95"
   />
   <path
     d="M320,626.86,443.07,503.78a93.05,93.05,0,0,0-10-17.27L302.72,616.88A93.62,93.62,0,0,0,320,626.86Z"
-    :fill="white"
+    :fill="colors.white"
     :opacity="0.25"
   />
   <path
     d="M455.86,507.53c29.52-12,58.53-12.42,87,0"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="20px"
   />
   <path
     d="M274.28,504.75c2.06,6.51-5.94,11.51-11.94,12.51-6,0-10-4-12-9-1-5,0-10,4-13,5-2,12-4,16.44,1.12A11.7,11.7,0,0,1,274.28,504.75Z"
-    :fill="white"
+    :fill="colors.white"
   />
   <path
     d="M285,500.93c-.61,4.33-6.61,4.33-7.61.33,0-3,1-4,3.84-4.1A3.77,3.77,0,0,1,285,500.93Z"
-    :fill="white"
+    :fill="colors.white"
   />
   <path
     d="M645.19,618.92,751.47,512.64a93.89,93.89,0,0,0-2.41-11.22L634,616.51A94.31,94.31,0,0,0,645.19,618.92Z"
-    :fill="white"
+    :fill="colors.white"
     :opacity="0.25"
   />
   <path
     d="M590.68,505.73c2.06,6.51-5.94,11.51-11.94,12.51-6,0-10-4-12-9-1-5,0-10,4-13,5-2,12-4,16.45,1.12A11.69,11.69,0,0,1,590.68,505.73Z"
-    :fill="white"
+    :fill="colors.white"
   />
   <path
     d="M601.35,501.91c-.61,4.33-6.61,4.33-7.61.33,0-3,1-4,3.85-4.1A3.76,3.76,0,0,1,601.35,501.91Z"
-    :fill="white"
+    :fill="colors.white"
   />
   <path
     d="M233.59,469.82s-.34,31.69.41,50.2c2.6,64.36,40.48,116.63,104.9,116.63A116.68,116.68,0,0,0,444.2,469.82Z"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="20px"
   />
   <path
     d="M553.91,469.82a116.68,116.68,0,0,0,105.3,166.83c64.42,0,107.54-51.53,107.54-115.94,0-18-2.23-50.89-2.23-50.89Z"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="20px"
   />
@@ -73,7 +70,7 @@ const white = colors.white;
     x2="574.97"
     y2="469.81"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="20px"
   />

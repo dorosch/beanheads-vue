@@ -4,8 +4,6 @@ import { colors } from '@/constants/theme';
 defineOptions({
   inheritAttrs: false,
 })
-
-const outline = colors.outline;
 </script>
 
 <template>
@@ -15,7 +13,7 @@ const outline = colors.outline;
     x2="306.24"
     y2="534.26"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-linecap="round"
     stroke-miterlimit="10"
     stroke-width="16px"
@@ -26,7 +24,7 @@ const outline = colors.outline;
     x2="375.88"
     y2="534.26"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-linecap="round"
     stroke-miterlimit="10"
     stroke-width="16px"
@@ -37,7 +35,7 @@ const outline = colors.outline;
     x2="626.34"
     y2="534.26"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-linecap="round"
     stroke-miterlimit="10"
     stroke-width="16px"
@@ -48,7 +46,7 @@ const outline = colors.outline;
     x2="695.99"
     y2="534.26"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-linecap="round"
     stroke-miterlimit="10"
     stroke-width="16px"

@@ -7,14 +7,10 @@ defineOptions({
   inheritAttrs: false,
 })
 
-withDefaults(defineProps<{
-  withLashes?: boolean,
-}>(), {
-  withLashes: false,
-})
+defineProps<{
+  withLashes: boolean,
+}>()
 
-const outline = colors.outline;
-const white = colors.white;
 const { skin } = useTheme();
 </script>
 
@@ -25,26 +21,26 @@ const { skin } = useTheme();
   />
   <path
     d="M269.77,558.47c-1-28.36,18-52.36,43.28-63.56a62.23,62.23,0,0,1,8.15-2.7,70,70,0,0,1,42.22,2.68,71.54,71.54,0,0,1,8.92,4.16c29.53,15.89,42.79,53.25,31.36,83.46a59.6,59.6,0,0,1-4.18,8.82,63.85,63.85,0,0,1-4.71,7.8,64.78,64.78,0,0,1-5.68,7,63.08,63.08,0,0,1-7.12,6.07,68.37,68.37,0,0,1-7.85,5c-27.38,13-64.38,9-86.44-11.4a67.24,67.24,0,0,1-6.11-7.47,65,65,0,0,1-5.58-9.5A55.59,55.59,0,0,1,270.32,567,71.3,71.3,0,0,1,269.77,558.47Z"
-    :fill="white"
-    :stroke="outline"
+    :fill="colors.white"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="12px"
   />
-  <circle cx="338.51" cy="559.08" r="12.24" :fill="outline" />
+  <circle cx="338.51" cy="559.08" r="12.24" :fill="colors.outline" />
   <line
     x1="715.03"
     y1="559.08"
     x2="603.4"
     y2="559.08"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-linecap="round"
     stroke-miterlimit="10"
     stroke-width="16px"
   />
   <path
     d="M627,574.16a114.14,114.14,0,0,1,13.07-1.56c4.36-.3,8.72-.43,13.08-.44s8.71.14,13.07.43a114.34,114.34,0,0,1,13.08,1.57,112.18,112.18,0,0,1-13.08,1.58q-6.54.43-13.07.42t-13.08-.43A112,112,0,0,1,627,574.16Z"
-    :fill="outline"
+    :fill="colors.outline"
   />
 
   <template v-if="withLashes">

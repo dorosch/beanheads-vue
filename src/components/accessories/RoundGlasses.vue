@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { colors } from '@/constants/theme';
-
-const outline = colors.outline;
-const white = colors.white;
 </script>
 
 <template>
@@ -21,7 +18,7 @@ const white = colors.white;
     cy="548.55"
     r="93.31"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="20px"
   />
@@ -30,14 +27,14 @@ const white = colors.white;
     cy="548.55"
     r="93.31"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="20px"
   />
   <path
     d="M432.77,548.55c45.2-18.31,89.61-19,133.14,0"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="20px"
   />
@@ -60,7 +57,7 @@ const white = colors.white;
     cy="548.55"
     r="93.31"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-miterlimit="10"
     stroke-width="20px"
   />

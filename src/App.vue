@@ -7,6 +7,7 @@ import Avatar from './components/Avatar.vue'
     width="300" 
     height="300" 
     mask
+    skin="brown"
     body="breasts"
     hat-color="red"
     clothing="shirt"
