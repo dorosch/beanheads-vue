@@ -5,10 +5,10 @@ import Avatar from './components/Avatar.vue'
 <template>
   <Avatar 
     mask
-    hat-color="red"
     width="300" 
     height="300" 
     body="breasts"
+    hat-color="red"
     clothing="dress-shirt"
     clothing-color="green"
     mouth="tongue"
