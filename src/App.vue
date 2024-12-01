@@ -9,7 +9,7 @@ import Avatar from './components/Avatar.vue'
     height="300" 
     body="breasts"
     hat-color="red"
-    clothing="dress-shirt"
+    clothing="shirt"
     clothing-color="green"
     mouth="tongue"
     accessory="none"

@@ -87,14 +87,36 @@ const props = withDefaults(defineProps<{
   faceMaskColor: 'white',
 })
 
-const needFrontClothing = computed(() => {
-  return props.clothing === 'dress'
-});
-
-const needBackClothing = computed(() => {
-  return props.clothing === 'dress' || props.clothing === 'shirt' || props.clothing === 'dress-shirt' || props.clothing === 'tank-top' || props.clothing === 'v-neck';
-});
-
+const clothingVisibility = computed(() => ({
+  'none': {
+    front: false,
+    back: false,
+  },
+  'naked': {
+    front: false,
+    back: false,
+  },
+  'dress': {
+    front: true,
+    back: true,
+  },
+  'shirt': {
+    front: false,
+    back: true,
+  },
+  'dress-shirt': {
+    front: false,
+    back: true,
+  },
+  'tank-top': {
+    front: false,
+    back: true,
+  },
+  'v-neck': {
+    front: false,
+    back: true,
+  },
+})[props.clothing])
 </script>
 
 <template>
@@ -144,15 +166,15 @@ const needBackClothing = computed(() => {
       </Clothing>
 
       <Body
-        v-if="needFrontClothing || needBackClothing"
+        v-if="clothingVisibility.front || clothingVisibility.back"
+        position="front"
         :type="body"
         :color="clothing === 'dress-shirt' ? 'white' : clothingColor"
-        position="front"
         :bra-straps="braStraps"
       />
 
       <Clothing
-        v-if="needFrontClothing"
+        v-if="clothingVisibility.front"
         position="front"
         :type="clothing"
         :color="clothingColor"
