@@ -4,9 +4,11 @@ import Stubble from "./Stubble.vue";
 import MediumBeard from "./MediumBeard.vue";
 import type { colors } from "@/constants/theme";
 
+export type FacialHairType = 'none' | 'stubble' | 'medium-beard'
+
 const props = defineProps<{
+  type: FacialHairType,
   color: keyof typeof colors.hair,
-  type: 'none' | 'stubble' | 'medium-beard'
 }>()
 
 const facialHairComponent = computed(() => {
@@ -19,5 +21,5 @@ const facialHairComponent = computed(() => {
 </script>
 
 <template>
-  <component v-if="facialHairComponent" :is="facialHairComponent" :color="color" />
+  <component :is="facialHairComponent" :color="color" />
 </template>

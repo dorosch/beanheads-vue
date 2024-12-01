@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { colors } from "@/constants/theme";
+
+defineOptions({
+  inheritAttrs: false
+})
+
 </script>
 
 <template>

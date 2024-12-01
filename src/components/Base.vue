@@ -12,7 +12,7 @@ import Mouth from './mouths/Mouth.vue';
 import Accessory, { type AccessoryType } from './accessories/Accessory.vue';
 import Hair from './hairs/Hair.vue';
 import Eyebrows, { type EyebrowsType } from './eyebrows/Eyebrows.vue';
-import FacialHair from './facialHairs/FacialHair.vue';
+import FacialHair, { type FacialHairType } from './facialHairs/FacialHair.vue';
 import ClothingGraphic, { type ClothingGraphicType } from './clothingGraphics/ClothingGraphic.vue';
 import FaceMask from './FaceMask.vue';
 
@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<{
   hairColor?: keyof typeof colors.hair,
 
   eyebrows?: EyebrowsType,
-  facialHair?: 'none' | 'stubble' | 'medium-beard',
+  facialHair?: FacialHairType,
 
   clothingGraphic?: ClothingGraphicType,
 

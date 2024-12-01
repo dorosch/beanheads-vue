@@ -2,6 +2,10 @@
 import { colors } from "@/constants/theme";
 import { computed } from "vue";
 
+defineOptions({
+  inheritAttrs: false
+})
+
 const props = defineProps<{
   color: keyof typeof colors.hair
 }>()
