@@ -6,7 +6,7 @@ import Hat from './hats/Hat.vue';
 import Body, { type BodyType } from './bodies/Body.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
-import Eye from './eyes/Eye.vue';
+import Eye, { type EyeType } from './eyes/Eye.vue';
 import Clothing, { type ClothingType } from './clothings/Clothing.vue';
 import Mouth from './mouths/Mouth.vue';
 import Accessory, { type AccessoryType } from './accessories/Accessory.vue';
@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<{
   color?: keyof typeof colors.clothing,
   position?: 'front' | 'back',
   braStraps?: boolean,
-  eye?: 'content-eyes' | 'heart-eyes' | 'dizzy-eyes' | 'happy-eyes' | 'left-twitch-eyes' | 'normal-eyes' | 'simple-eyes' | 'squint-eyes' | 'wink',
+  eye?: EyeType,
   withLashes?: boolean,
   clothing?: ClothingType,
   clothingColor?: keyof typeof colors.clothing,
@@ -53,7 +53,7 @@ const props = withDefaults(defineProps<{
   position: 'front',
   braStraps: true,
   clothingColor: 'white',
-  eye: 'content-eyes',
+  eye: 'normal-eyes',
   withLashes: false,
   clothing: 'none',
   lipColor: 'red',
@@ -237,7 +237,7 @@ const hatScale = computed(() => {
         :color="hairColor" 
       />
 
-      <Eye :eye="eye" :with-lashes="withLashes" />
+      <Eye :type="eye" :with-lashes="withLashes" />
 
       <Mouth :mouth="mouth" :color="lipColor" />
 
@@ -254,7 +254,7 @@ const hatScale = computed(() => {
       />
 
       <Eyebrows :type="eyebrows" />
-      
+
       <Hat position="front" :hat="hat" :color="hatColor" :scale="hatScale" />
 
       <Accessory 

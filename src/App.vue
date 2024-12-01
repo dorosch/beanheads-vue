@@ -9,8 +9,6 @@ import Base from './components/Base.vue'
     hat-color="red"
     width="300" 
     height="300" 
-    eye="wink"
-    with-lashes
     body="breasts"
     clothing="dress-shirt"
     clothing-color="green"
