@@ -6,25 +6,24 @@ import Normal from "./Normal.vue";
 import ConcernedEyebrows from "./ConcernedEyebrows.vue";
 import AngryEyebrows from "./AngryEyebrows.vue";
 
+export type EyebrowsType = 'none' | "normal" | "serious" | "left-lowered" | 'angry' | 'concerned';
+
 const props = defineProps<{
-  eyebrows: 'none' | "normal" | "serious" | "left-lowered" | 'angry' | 'concerned'
+  type: EyebrowsType
 }>()
 
 const eyebrowsComponent = computed(() => {
   return {
-    normal: Normal,
-    serious: SeriousEyebrows,
-    "left-lowered": LeftLoweredEyebrows,
-    angry: AngryEyebrows,
-    concerned: ConcernedEyebrows,
-    none: null
-  }[props.eyebrows]
+    'none': null,
+    'normal': Normal,
+    'serious': SeriousEyebrows,
+    'left-lowered': LeftLoweredEyebrows,
+    'angry': AngryEyebrows,
+    'concerned': ConcernedEyebrows,
+  }[props.type]
 })
 </script>
 
 <template>
-  <component 
-    v-if="eyebrowsComponent"
-    :is="eyebrowsComponent"
-  />
+  <component :is="eyebrowsComponent"/>
 </template>

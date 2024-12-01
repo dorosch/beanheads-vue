@@ -18,7 +18,6 @@ import Base from './components/Base.vue'
     accessory="none"
     hair="short"
     hair-color="brown"
-    eyebrows="angry"
     facial-hair="medium-beard"
     clothing-graphic="vue"
     face-mask

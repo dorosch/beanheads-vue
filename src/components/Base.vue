@@ -11,7 +11,7 @@ import Clothing, { type ClothingType } from './clothings/Clothing.vue';
 import Mouth from './mouths/Mouth.vue';
 import Accessory, { type AccessoryType } from './accessories/Accessory.vue';
 import Hair from './hairs/Hair.vue';
-import Eyebrows from './eyebrows/Eyebrows.vue';
+import Eyebrows, { type EyebrowsType } from './eyebrows/Eyebrows.vue';
 import FacialHair from './facialHairs/FacialHair.vue';
 import ClothingGraphic, { type ClothingGraphicType } from './clothingGraphics/ClothingGraphic.vue';
 import FaceMask from './FaceMask.vue';
@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<{
   hair?: 'none' | 'afro' | 'balding' | 'bob' | 'bun' | 'buzz' | 'long' | 'pixie' | 'short',
   hairColor?: keyof typeof colors.hair,
 
-  eyebrows?: 'none' | 'normal' | 'serious' | 'left-lowered' | 'angry' | 'concerned',
+  eyebrows?: EyebrowsType,
   facialHair?: 'none' | 'stubble' | 'medium-beard',
 
   clothingGraphic?: ClothingGraphicType,
@@ -61,7 +61,7 @@ const props = withDefaults(defineProps<{
   accessory: 'none',
   hair: 'none',
   hairColor: 'white',
-  eyebrows: 'normal',
+  eyebrows: 'none',
   facialHair: 'none',
   clothingGraphic: 'none',
   faceMask: false,
@@ -253,7 +253,8 @@ const hatScale = computed(() => {
         :hasHat="hatScale > 0"
       />
 
-      <Eyebrows :eyebrows="eyebrows" />
+      <Eyebrows :type="eyebrows" />
+      
       <Hat position="front" :hat="hat" :color="hatColor" :scale="hatScale" />
 
       <Accessory 
