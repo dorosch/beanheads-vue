@@ -14,27 +14,27 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const props = withDefaults(defineProps<{
+export type HairType = 'none' | 'afro' | 'balding' | 'bob' | 'bun' | 'buzz' | 'long' | 'pixie' | 'short';
+
+const props = defineProps<{
   position: 'front' | 'back';
-  hair: 'none' | 'afro' | 'balding' | 'bob' | 'bun' | 'buzz' | 'long' | 'pixie' | 'short';
+  type: HairType,
   color: keyof typeof colors.hair;
-  hasHat?: boolean;
-}>(), {
-  hasHat: false,
-});
+  hasHat: boolean;
+}>();
 
 const hairComponent = computed(() => {
   return {
     'none': null,
-    afro: Afro,
-    balding: BaldingHair,
-    bob: BobCut,
-    bun: BunHair,
-    buzz: BuzzCut,
-    long: LongHair,
-    pixie: PixieCut,
-    short: ShortHair,
-  }[props.hair];
+    'afro': Afro,
+    'balding': BaldingHair,
+    'bob': BobCut,
+    'bun': BunHair,
+    'buzz': BuzzCut,
+    'long': LongHair,
+    'pixie': PixieCut,
+    'short': ShortHair,
+  }[props.type];
 })
 </script>
 

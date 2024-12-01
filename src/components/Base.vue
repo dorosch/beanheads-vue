@@ -10,7 +10,7 @@ import Eye, { type EyeType } from './eyes/Eye.vue';
 import Clothing, { type ClothingType } from './clothings/Clothing.vue';
 import Mouth from './mouths/Mouth.vue';
 import Accessory, { type AccessoryType } from './accessories/Accessory.vue';
-import Hair from './hairs/Hair.vue';
+import Hair, { type HairType } from './hairs/Hair.vue';
 import Eyebrows, { type EyebrowsType } from './eyebrows/Eyebrows.vue';
 import FacialHair, { type FacialHairType } from './facialHairs/FacialHair.vue';
 import ClothingGraphic, { type ClothingGraphicType } from './clothingGraphics/ClothingGraphic.vue';
@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<{
   mouth?: 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue',
   accessory?: AccessoryType,
 
-  hair?: 'none' | 'afro' | 'balding' | 'bob' | 'bun' | 'buzz' | 'long' | 'pixie' | 'short',
+  hair?: HairType,
   hairColor?: keyof typeof colors.hair,
 
   eyebrows?: EyebrowsType,
@@ -109,7 +109,7 @@ const hatScale = computed(() => {
 
       <Hair
         position="back" 
-        :hair="hair" 
+        :type="hair" 
         :color="hairColor" 
         :hasHat="hatScale > 0"
       />
@@ -248,7 +248,7 @@ const hatScale = computed(() => {
 
       <Hair
         position="front"
-        :hair="hair"
+        :type="hair"
         :color="hairColor"
         :hasHat="hatScale > 0"
       />
