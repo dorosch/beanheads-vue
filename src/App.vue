@@ -4,9 +4,9 @@ import Avatar from './components/Avatar.vue'
 
 <template>
   <Avatar 
-    mask
     width="300" 
     height="300" 
+    mask
     body="breasts"
     hat-color="red"
     clothing="shirt"

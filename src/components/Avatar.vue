@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Vue core
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 
 // Theme
 import { colors } from '@/constants/theme';
@@ -22,12 +22,14 @@ import FacialHair, { type FacialHairType } from './facialHairs/FacialHair.vue';
 import Hair, { type HairType } from './hairs/Hair.vue';
 import Hat, { type HatType } from './hats/Hat.vue';
 import Mouth, { type MouthType } from './mouths/Mouth.vue';
+import { useTheme } from '@/composables/useTheme';
 
 const props = withDefaults(defineProps<{
   // Layout
   mask?: boolean,
 
   // Body
+  skin?: keyof typeof colors.skin,
   body?: BodyType,
   braStraps?: boolean,
 
@@ -59,6 +61,7 @@ const props = withDefaults(defineProps<{
   mask: false,
 
   // Body
+  skin: 'light',
   body: 'chest',
   braStraps: true,
 
@@ -117,6 +120,11 @@ const clothingVisibility = computed(() => ({
     back: true,
   },
 })[props.clothing])
+
+const { setSkin } = useTheme();
+watch(() => props.skin, (skin) => {
+  setSkin(skin)
+})
 </script>
 
 <template>
