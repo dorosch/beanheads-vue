@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import Mask from './Mask.vue';
 import BgCircle from './BgCircle.vue';
-import Hat from './hats/Hat.vue';
+import Hat, { type HatType } from './hats/Hat.vue';
 import Body, { type BodyType } from './bodies/Body.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
@@ -19,7 +19,7 @@ import FaceMask from './FaceMask.vue';
 const props = withDefaults(defineProps<{
   mask?: boolean
   body?: BodyType,
-  hat?: 'none' | 'beanie' | 'turban',
+  hat?: HatType,
   hatColor?: keyof typeof colors.clothing,
   color?: keyof typeof colors.clothing,
   position?: 'front' | 'back',
@@ -78,20 +78,6 @@ const needBackClothing = computed(() => {
   return props.clothing === 'dress' || props.clothing === 'shirt' || props.clothing === 'dress-shirt' || props.clothing === 'tank-top' || props.clothing === 'v-neck';
 });
 
-const hatScale = computed(() => {
-  return {
-    bob: 1.12,
-    afro: 0,
-    balding: 0,
-    none: 1,
-    bun: 1,
-    buzz: 1,
-    long: 1.12,
-    pixie: 1,
-    short: 1,
-  }[props.hair] ?? 0
-})
-
 </script>
 
 <template>
@@ -105,13 +91,18 @@ const hatScale = computed(() => {
     >
       <BgCircle v-if="mask" />
       
-      <Hat position="back" :hat="hat" :color="hatColor" :scale="hatScale" />
+      <Hat 
+        position="back" 
+        :type="hat" 
+        :color="hatColor"
+        :hairType="hair"
+      />
 
       <Hair
         position="back" 
         :type="hair" 
         :color="hairColor" 
-        :hasHat="hatScale > 0"
+        :hasHat="hat !== 'none'"
       />
 
       <path
@@ -250,12 +241,17 @@ const hatScale = computed(() => {
         position="front"
         :type="hair"
         :color="hairColor"
-        :hasHat="hatScale > 0"
+        :hasHat="hat !== 'none'"
       />
 
       <Eyebrows :type="eyebrows" />
 
-      <Hat position="front" :hat="hat" :color="hatColor" :scale="hatScale" />
+      <Hat 
+        position="front" 
+        :type="hat" 
+        :color="hatColor" 
+        :hairType="hair"
+      />
 
       <Accessory 
         :type="accessory"
