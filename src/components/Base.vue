@@ -8,7 +8,7 @@ import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
 import Eye, { type EyeType } from './eyes/Eye.vue';
 import Clothing, { type ClothingType } from './clothings/Clothing.vue';
-import Mouth from './mouths/Mouth.vue';
+import Mouth, { type MouthType } from './mouths/Mouth.vue';
 import Accessory, { type AccessoryType } from './accessories/Accessory.vue';
 import Hair, { type HairType } from './hairs/Hair.vue';
 import Eyebrows, { type EyebrowsType } from './eyebrows/Eyebrows.vue';
@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<{
   clothingColor?: keyof typeof colors.clothing,
 
   lipColor?: keyof typeof colors.lipColors,
-  mouth?: 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue',
+  mouth?: MouthType,
   accessory?: AccessoryType,
 
   hair?: HairType,
@@ -230,7 +230,10 @@ const needBackClothing = computed(() => {
 
       <Eye :type="eye" :with-lashes="withLashes" />
 
-      <Mouth :mouth="mouth" :color="lipColor" />
+      <Mouth
+        :type="mouth" 
+        :color="lipColor" 
+      />
 
       <FaceMask 
         v-if="faceMask" 

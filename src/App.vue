@@ -16,9 +16,6 @@ import Base from './components/Base.vue'
     hair="bun"
     hat="turban"
     hair-color="blue"
-    facial-hair="medium-beard"
     clothing-graphic="vue"
-    face-mask
-    face-mask-color="red"
   />  
 </template>

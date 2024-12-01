@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { colors } from '@/constants/theme';
 
-const outline = colors.outline;
-const tongue = colors.tongue;
+defineOptions({
+  inheritAttrs: false
+})
 </script>
 
 <template>
@@ -12,7 +13,7 @@ const tongue = colors.tongue;
     x2="542.53"
     y2="606.02"
     fill="none"
-    :stroke="outline"
+    :stroke="colors.outline"
     stroke-linecap="round"
     stroke-miterlimit="10"
     stroke-width="12px"

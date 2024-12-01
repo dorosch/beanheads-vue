@@ -9,21 +9,22 @@ import SeriousMouth from './SeriousMouth.vue';
 import Tongue from './Tongue.vue';
 import Lips from './Lips.vue';
 
-const props = defineProps<{
-  color: keyof typeof colors.lipColors,
-  mouth: 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue',
-}>()
+export type MouthType = 'grin' | 'lips' | 'sad' | 'serious' | 'open' | 'tongue'
 
+const props = defineProps<{
+  type: MouthType,
+  color: keyof typeof colors.lipColors,
+}>()
 
 const mouthComponent = computed(() => {
   return {
-    grin: Grin,
-    lips: Lips,
-    sad: Sad,
-    serious: SeriousMouth,
-    open: OpenMouth,
-    tongue: Tongue,
-  }[props.mouth];
+    'grin': Grin,
+    'lips': Lips,
+    'sad': Sad,
+    'serious': SeriousMouth,
+    'open': OpenMouth,
+    'tongue': Tongue,
+  }[props.type];
 })
 
 </script>
