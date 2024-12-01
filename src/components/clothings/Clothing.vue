@@ -7,15 +7,13 @@ import Shirt from './Shirt.vue';
 import TankTop from './TankTop.vue';
 import VNeck from './VNeck.vue';
 
-const props = withDefaults(defineProps<{
-  position?: 'front' | 'back',
-  clothing?: 'none' | 'naked' | 'dress' | 'dress-shirt' | 'shirt' | 'tank-top' | 'v-neck',
-  color?: keyof typeof colors.clothing,
-}>(), {
-  position: 'front',
-  clothing: 'none',
-  color: 'white',
-})
+export type ClothingType = 'none' | 'naked' |'dress' | 'dress-shirt' | 'shirt' | 'tank-top' | 'v-neck';
+
+const props = defineProps<{
+  position: 'front' | 'back',
+  type: ClothingType,
+  color: keyof typeof colors.clothing,
+}>()
 
 const clothingComponent = computed(() => ({
   'dress': Dress,
@@ -24,13 +22,12 @@ const clothingComponent = computed(() => ({
   'tank-top': TankTop,
   'v-neck': VNeck,
   'none': null,
-  'naked': null
-}[props.clothing]))
+  'naked': null,
+}[props.type]));
 </script>
 
 <template>
   <component
-    v-if="clothingComponent"
     :is="clothingComponent"
     :color="color"
     :position="position"

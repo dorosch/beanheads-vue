@@ -7,7 +7,7 @@ import Body, { type BodyType } from './bodies/Body.vue';
 import { colors } from '@/constants/theme';
 import { useTheme } from '@/composables/useTheme';
 import Eye from './eyes/Eye.vue';
-import Clothing from './clothings/Clothing.vue';
+import Clothing, { type ClothingType } from './clothings/Clothing.vue';
 import Mouth from './mouths/Mouth.vue';
 import Accessory, { type AccessoryType } from './accessories/Accessory.vue';
 import Hair from './hairs/Hair.vue';
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<{
   braStraps?: boolean,
   eye?: 'content-eyes' | 'heart-eyes' | 'dizzy-eyes' | 'happy-eyes' | 'left-twitch-eyes' | 'normal-eyes' | 'simple-eyes' | 'squint-eyes' | 'wink',
   withLashes?: boolean,
-  clothing?: 'none' | 'naked' | 'dress' | 'dress-shirt' | 'shirt' | 'tank-top' | 'v-neck',
+  clothing?: ClothingType,
   clothingColor?: keyof typeof colors.clothing,
 
   lipColor?: keyof typeof colors.lipColors,
@@ -205,10 +205,15 @@ const hatScale = computed(() => {
       />
 
       <Clothing 
-        position="back" :clothing="clothing" :color="clothingColor"
+        position="back" 
+        :type="clothing"
+        :color="clothingColor"
       >
         <template #graphic>
-          <ClothingGraphic v-if="clothingGraphic !== 'none'" :type="clothingGraphic" />
+          <ClothingGraphic 
+            v-if="clothingGraphic !== 'none'" 
+            :type="clothingGraphic" 
+          />
         </template>
       </Clothing>
 
@@ -223,7 +228,7 @@ const hatScale = computed(() => {
       <Clothing
         v-if="needFrontClothing"
         position="front"
-        :clothing="clothing"
+        :type="clothing"
         :color="clothingColor"
       />
 
