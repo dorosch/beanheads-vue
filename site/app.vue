@@ -1,10 +1,9 @@
 <script setup lang="ts">
-// import { Avatar } from 'beanheads-vue'
+import { Avatar } from 'beanheads-vue'
 </script>
 <template>
   <div>
-    Hello World
-    <!-- <Avatar 
+    <Avatar 
       width="300"
       mask
       accessory="round-glasses"
@@ -13,6 +12,6 @@
       hair-color="blonde"
       clothing="dress-shirt"
       clothing-color="green"
-    /> -->
+    />
   </div>
 </template>
