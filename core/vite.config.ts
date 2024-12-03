@@ -8,7 +8,7 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
   build: {
     lib: {
-      entry: fileURLToPath(new URL('./src/main.ts', import.meta.url)),
+      entry: fileURLToPath(new URL('./src/beanheads-vue.ts', import.meta.url)),
       name: 'beanheads-vue',
       fileName: 'beanheads-vue'
     },
