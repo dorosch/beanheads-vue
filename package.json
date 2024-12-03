@@ -1,0 +1,13 @@
+{
+  "name": "beanheads-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "core": "pnpm --filter beanheads-vue",
+    "site": "pnpm --filter beanheads-site"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
