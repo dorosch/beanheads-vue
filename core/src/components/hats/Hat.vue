@@ -20,20 +20,6 @@ const hatComponent = computed(() => ({
   'beanie': Beanie,
   'turban': Turban,
 }[props.type]))
-
-const hatScale = computed(() => {
-  return {
-    'bob': 1.12,
-    'afro': 0,
-    'balding': 0.9,
-    'none': 1,
-    'bun': 1,
-    'buzz': 1,
-    'long': 1.12,
-    'pixie': 1,
-    'short': 1,
-  }[props.hairType]
-})
 </script>
 
 <template>
@@ -41,6 +27,6 @@ const hatScale = computed(() => {
     :is="hatComponent"
     :position="position"
     :color="color"
-    :scale="hatScale"
+    :hair-type="hairType"
   />
 </template>

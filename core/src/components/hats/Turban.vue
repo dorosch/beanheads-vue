@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { colors } from '@/constants/theme';
 import { computed } from 'vue';
+import type { HairType } from '../hairs/Hair.vue';
 
 defineOptions({
   inheritAttrs: false
@@ -9,17 +10,29 @@ defineOptions({
 const props = defineProps<{
   position: 'front' | 'back'
   color: keyof typeof colors.clothing
-  scale: number
+  hairType: HairType
 }>()
 
 const hatColor = computed(() => colors.clothing[props.color])
+const hatTransform = computed(() => {
+  return {
+    'bob': 'translate(-60, -60) scale(1.12)',
+    'afro': 'translate(0, 0) scale(0)',
+    'balding': 'translate(55, 50) scale(0.9)',
+    'none': 'translate(0, 0) scale(1)',
+    'bun': 'translate(0, 0) scale(1)',
+    'buzz': 'translate(0, 0) scale(1)',
+    'long': 'translate(-60, -60) scale(1.12)',
+    'pixie': 'translate(0, 0) scale(1)',
+    'short': 'translate(0, 0) scale(1)',
+  }[props.hairType]
+})
 </script>
 
 <template>
   <g
     v-if="position === 'front'"
-    :style="{ transformOrigin: 'center' }"
-    :transform="`scale(${scale})`"
+    :transform="hatTransform"
   >
     <path
       d="M765.63,495.43s.3-2.94.8-8.24C759.75,345.82,643,233.25,500,233.25c-147.32,0-266.75,119.43-266.75,266.75,0,7.28.31,14.49.89,21.63,12.11-39.32,161.32-77.95,298.44-133.08C631.75,452.24,765.63,495.43,765.63,495.43Z"
