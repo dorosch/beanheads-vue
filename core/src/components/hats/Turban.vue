@@ -18,7 +18,7 @@ const hatTransform = computed(() => {
   return {
     'bob': 'translate(-60, -60) scale(1.12)',
     'afro': 'translate(0, 0) scale(0)',
-    'balding': 'translate(55, 50) scale(0.9)',
+    'balding': 'translate(55, 40) scale(0.9)',
     'none': 'translate(0, 0) scale(1)',
     'bun': 'translate(0, 0) scale(1)',
     'buzz': 'translate(0, 0) scale(1)',
