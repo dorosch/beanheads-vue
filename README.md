@@ -1,7 +1,7 @@
 # Bean Heads Vue
 
 <p align="center">
-  <img alt="Bean Heads Characters" src="./demo/characters.gif" width="400"/>
+  <img alt="Bean Heads Characters" src="./demo/beanheads-demo.gif" width="400"/>
 </p>
 
 Easily generate avatars for your projects with Bean Heads Vue.
