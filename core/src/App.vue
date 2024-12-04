@@ -14,7 +14,7 @@ import Avatar from './components/Avatar.vue'
     clothing-color="green"
     mouth="tongue"
     accessory="none"
-    hair="bun"
+    hair="balding"
     hat="turban"
     hair-color="blue"
     clothing-graphic="vue"

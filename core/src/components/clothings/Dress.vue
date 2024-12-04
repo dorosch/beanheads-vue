@@ -78,5 +78,8 @@ const clothingColor = computed(() => colors.clothing[props.color]);
       d="M557.91,889.36c4.41-.78,8.76-1.39,13.1-2l13-1.93c4.31-.65,8.61-1.36,12.91-2.1s8.61-1.58,13.07-2.2a62.58,62.58,0,0,1-12.33,5.26,87,87,0,0,1-13,3,94.61,94.61,0,0,1-13.33,1.11A65.72,65.72,0,0,1,557.91,889.36Z"
       :fill="colors.outline"
     />
+    <g transform="translate(0 40)">
+      <slot name="graphic" />
+    </g>
   </template>
 </template>
