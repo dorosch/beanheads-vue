@@ -17,6 +17,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
     "http-server": "^14.1.1"
   }
 }
