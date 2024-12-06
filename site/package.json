@@ -11,13 +11,13 @@
     "start": "http-server .output/public -p 0"
   },
   "dependencies": {
+    "@nuxt/ui": "2.19.2",
     "beanheads-vue": "workspace:^",
     "nuxt": "^3.14.1592",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.12.2",
     "http-server": "^14.1.1"
   }
 }
