@@ -163,13 +163,7 @@ function randomizeAvatar() {
         <div>
           <h3 class="text-base font-semibold mb-2">Mask</h3>
           <div>
-            <URadioGroup
-              v-model="options.mask"
-              :options="[{ label: 'True', value: true }, { label: 'False', value: false }]"
-              :ui="{
-                fieldset: 'flex gap-4',
-              }"
-            />
+            <UToggle v-model="options.mask" size="xl"/>
           </div>
         </div>
         <div>
@@ -222,16 +216,7 @@ function randomizeAvatar() {
         <div>
           <h3 class="text-base font-semibold mb-2">With Lashes</h3>
           <div>
-            <URadioGroup
-              v-model="options.withLashes"
-              :options="[
-                { label: 'True', value: true },
-                { label: 'False', value: false }
-              ]"
-              :ui="{
-                fieldset: 'flex gap-4',
-              }"
-            />
+            <UToggle v-model="options.withLashes" size="xl"/>
           </div>
         </div>
         <div>
@@ -467,13 +452,7 @@ function randomizeAvatar() {
         <div>
           <h3 class="text-base font-semibold mb-2">Face Mask</h3>
           <div>
-            <URadioGroup
-              v-model="options.faceMask"
-              :options="[{ label: 'True', value: true }, { label: 'False', value: false }]"
-              :ui="{
-                fieldset: 'flex  gap-4',
-              }"
-            />
+            <UToggle v-model="options.faceMask" size="xl"/>
           </div>
         </div>
         <div>
