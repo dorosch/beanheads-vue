@@ -12,14 +12,16 @@ import { type HairType } from '../../core/src/components/hairs/Hair.vue';
 import { type HatType } from '../../core/src/components/hats/Hat.vue';
 import { type MouthType } from '../../core/src/components/mouths/Mouth.vue';
 
+
+
 type AvatarOptions = {
-  mask: boolean
-  faceMask: boolean
+  mask: string
+  faceMask: string
   faceMaskColor: keyof typeof colors.clothing
   skin: keyof typeof colors.skin
   body: BodyType
   eye: EyeType
-  withLashes: boolean
+  withLashes: string
   eyebrows: EyebrowsType
   mouth: MouthType
   lipColor: keyof typeof colors.lipColors
@@ -34,39 +36,40 @@ type AvatarOptions = {
   accessory: AccessoryType
 }
 
-const options = reactive<AvatarOptions>({
-  // Layout
-  mask: false,
+const options = useUrlSearchParams<AvatarOptions>('history', {
+  initialValue: {
+    // Layout
+    mask: 'false',
 
-  // Body
-  skin: 'light',
-  body: 'chest',
+    // Body
+    skin: 'light',
+    body: 'chest',
 
-  // Face
-  eye: 'normal-eyes',
-  withLashes: false,
-  eyebrows: 'none',
-  mouth: 'grin',
-  lipColor: 'red',
-  facialHair: 'none',
+    // Face
+    eye: 'normal-eyes',
+    withLashes: 'false',
+    eyebrows: 'none',
+    mouth: 'grin',
+    lipColor: 'red',
+    facialHair: 'none',
 
-  // Hair
-  hair: 'none',
-  hairColor: 'white',
+    // Hair
+    hair: 'none',
+    hairColor: 'white',
 
-  // Clothing
-  clothing: 'none',
-  clothingColor: 'white',
-  clothingGraphic: 'none',
+    // Clothing
+    clothing: 'none',
+    clothingColor: 'white',
+    clothingGraphic: 'none',
 
-  // Accessories
-  accessory: 'none',
-  hat: 'none',
-  hatColor: 'white',
-  faceMask: false,
-  faceMaskColor: 'white',
+    // Accessories
+    accessory: 'none',
+    hat: 'none',
+    hatColor: 'white',
+    faceMask: 'false',
+    faceMaskColor: 'white', 
+  }
 })
-
 
 function randomizeAvatar() {
   // Randomly pick skin tone
@@ -79,7 +82,7 @@ function randomizeAvatar() {
   options.eye = ['normal-eyes', 'content-eyes', 'dizzy-eyes', 'happy-eyes', 'heart-eyes', 'left-twitch-eyes'][Math.floor(Math.random() * 6)] as EyeType
 
   // Randomly pick eyelashes
-  options.withLashes = Math.random() < 0.5
+  options.withLashes = Math.random() < 0.5 ? 'true' : 'false'
 
   // Randomly pick eyebrows
   options.eyebrows = ['none', 'normal', 'serious', 'left-lowered', 'angry', 'concerned'][Math.floor(Math.random() * 6)] as EyebrowsType
@@ -118,7 +121,7 @@ function randomizeAvatar() {
   options.hatColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
 
   // Randomly pick face mask
-  options.faceMask = Math.random() < 0.5
+  options.faceMask = Math.random() < 0.5 ? 'true' : 'false'
 
   // Randomly pick face mask color
   options.faceMaskColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
@@ -131,11 +134,11 @@ function randomizeAvatar() {
     <div class="h-2/5 flex justify-center items-center">
       <Avatar 
         width="250"
-        :mask="options.mask"
+        :mask="options.mask === 'true'"
         :skin="options.skin"
         :body="options.body"
         :eye="options.eye"
-        :with-lashes="options.withLashes"
+        :with-lashes="options.withLashes === 'true'"
         :eyebrows="options.eyebrows"
         :mouth="options.mouth"
         :lip-color="options.lipColor"
@@ -148,7 +151,7 @@ function randomizeAvatar() {
         :hat="options.hat"
         :hat-color="options.hatColor"
         :accessory="options.accessory"
-        :face-mask="options.faceMask"
+        :face-mask="options.faceMask === 'true'"
         :face-mask-color="options.faceMaskColor"
       />
     </div>
@@ -163,7 +166,11 @@ function randomizeAvatar() {
         <div>
           <h3 class="text-base font-semibold mb-2">Mask</h3>
           <div>
-            <UToggle v-model="options.mask" size="xl"/>
+            <UToggle 
+              :model-value="options.mask === 'true'"
+              @update:model-value="options.mask = $event"
+              size="xl"
+            />
           </div>
         </div>
         <div>
@@ -216,7 +223,11 @@ function randomizeAvatar() {
         <div>
           <h3 class="text-base font-semibold mb-2">With Lashes</h3>
           <div>
-            <UToggle v-model="options.withLashes" size="xl"/>
+            <UToggle 
+              :model-value="options.withLashes === 'true'"
+              @update:model-value="options.withLashes = $event ? 'true' : 'false'"
+              size="xl"
+            />
           </div>
         </div>
         <div>
@@ -452,7 +463,11 @@ function randomizeAvatar() {
         <div>
           <h3 class="text-base font-semibold mb-2">Face Mask</h3>
           <div>
-            <UToggle v-model="options.faceMask" size="xl"/>
+            <UToggle 
+              :model-value="options.faceMask === 'true'"
+              @update:model-value="options.faceMask = $event ? 'true' : 'false'"
+              size="xl"
+            />
           </div>
         </div>
         <div>
