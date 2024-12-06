@@ -184,7 +184,7 @@ function resetAvatar() {
           <div>
             <UToggle 
               :model-value="options.mask === 'true'"
-              @update:model-value="options.mask = $event"
+              @update:model-value="options.mask = $event ? 'true' : 'false'"
               size="xl"
             />
           </div>
