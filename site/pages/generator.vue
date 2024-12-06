@@ -12,8 +12,6 @@ import { type HairType } from '../../core/src/components/hairs/Hair.vue';
 import { type HatType } from '../../core/src/components/hats/Hat.vue';
 import { type MouthType } from '../../core/src/components/mouths/Mouth.vue';
 
-
-
 type AvatarOptions = {
   mask: string
   faceMask: string
@@ -36,39 +34,41 @@ type AvatarOptions = {
   accessory: AccessoryType
 }
 
-const options = useUrlSearchParams<AvatarOptions>('history', {
-  initialValue: {
-    // Layout
-    mask: 'false',
+const initialOptions: AvatarOptions = {
+  // Layout
+  mask: 'false',
 
-    // Body
-    skin: 'light',
-    body: 'chest',
+  // Body
+  skin: 'light',
+  body: 'chest',
 
-    // Face
-    eye: 'normal-eyes',
-    withLashes: 'false',
-    eyebrows: 'none',
-    mouth: 'grin',
-    lipColor: 'red',
-    facialHair: 'none',
+  // Face
+  eye: 'normal-eyes',
+  withLashes: 'false',
+  eyebrows: 'none',
+  mouth: 'grin',
+  lipColor: 'red',
+  facialHair: 'none',
 
-    // Hair
-    hair: 'none',
-    hairColor: 'white',
+  // Hair
+  hair: 'none',
+  hairColor: 'white',
 
-    // Clothing
-    clothing: 'none',
-    clothingColor: 'white',
-    clothingGraphic: 'none',
+  // Clothing
+  clothing: 'none',
+  clothingColor: 'white',
+  clothingGraphic: 'none',
 
-    // Accessories
-    accessory: 'none',
-    hat: 'none',
-    hatColor: 'white',
-    faceMask: 'false',
-    faceMaskColor: 'white', 
-  }
+  // Accessories
+  accessory: 'none',
+  hat: 'none',
+  hatColor: 'white',
+  faceMask: 'false',
+  faceMaskColor: 'white', 
+}
+
+const options = useUrlSearchParams('history', {
+  initialValue: structuredClone(initialOptions)
 })
 
 function randomizeAvatar() {
@@ -126,6 +126,10 @@ function randomizeAvatar() {
   // Randomly pick face mask color
   options.faceMaskColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
 }
+
+function resetAvatar() {
+  Object.assign(options, structuredClone(initialOptions))
+}
 </script>
 <template>
   <main 
@@ -157,10 +161,22 @@ function randomizeAvatar() {
     </div>
     <div class="h-3/5 p-5 rounded-t-2xl border-t border-gray-200 shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] overflow-auto">
       <div class="flex flex-col gap-6">
-        <div>
+        <div class="flex gap-2">
           <!-- Randomize Avatar -->
-          <UButton type="button" @click="randomizeAvatar">
-            Randomize Avatar
+          <UButton 
+            type="button" 
+            @click="randomizeAvatar"
+          >
+            Randomize
+          </UButton>
+
+          <!-- Reset Avatar -->
+          <UButton 
+            type="button" 
+            variant="outline"
+            @click="resetAvatar"
+          >
+            Reset
           </UButton>
         </div>
         <div>
