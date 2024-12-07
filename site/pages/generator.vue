@@ -130,6 +130,33 @@ function randomizeAvatar() {
 function resetAvatar() {
   Object.assign(options, structuredClone(initialOptions))
 }
+
+const isOpen = ref(false)
+const code = computed(() => (`<Avatar 
+  :mask="${options.mask === 'true'}"
+  skin="${options.skin}"
+  body="${options.body}"
+  eye="${options.eye}"
+  :with-lashes="${options.withLashes === 'true'}"
+  eyebrows="${options.eyebrows}"
+  mouth="${options.mouth}"
+  lip-color="${options.lipColor}"
+  facial-hair="${options.facialHair}"
+  hair="${options.hair}"
+  hair-color="${options.hairColor}"
+  clothing="${options.clothing}"
+  clothing-color="${options.clothingColor}"
+  clothing-graphic="${options.clothingGraphic}"
+  hat="${options.hat}"
+  hat-color="${options.hatColor}"
+  accessory="${options.accessory}"
+  :face-mask="${options.faceMask === 'true'}"
+  face-mask-color="${options.faceMaskColor}"
+/>`))
+
+function copyCode() {
+  navigator.clipboard.writeText(code.value)
+}
 </script>
 <template>
   <!-- 
@@ -140,6 +167,17 @@ function resetAvatar() {
     <main 
       class="flex flex-col gap-4 h-screen md:w-[50rem] mx-auto"
     >
+      <div class="h-12 flex-shrink-0 flex justify-end p-2">
+        <UButton
+          icon="i-heroicons:code-bracket-16-solid"
+          size="sm"
+          color="primary"
+          square
+          variant="ghost"
+          class="flex-shrink-0"
+          @click="isOpen = true"
+        />
+      </div>
       <div class="h-2/5 flex justify-center items-center">
         <Avatar 
           width="250"
@@ -164,7 +202,7 @@ function resetAvatar() {
           :face-mask-color="options.faceMaskColor"
         />
       </div>
-      <div class="h-3/5 p-5 rounded-t-2xl border-t border-gray-200 shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] overflow-auto">
+      <div class="flex-grow p-5 rounded-t-2xl border-t border-gray-200 shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] overflow-auto">
         <div class="flex flex-col gap-6">
           <div class="flex gap-2">
             <!-- Randomize Avatar -->
@@ -519,6 +557,21 @@ function resetAvatar() {
         </div>
       </div>
     </main>
+
+    <UModal v-model="isOpen">
+      <UButton 
+        icon="i-heroicons-outline:clipboard-copy"
+        size="sm"
+        color="primary"
+        square
+        variant="ghost"
+        class="flex-shrink-0 absolute top-3 right-3"
+        @click="() => copyCode()"
+      />
+      <div class="p-4">
+        <Shiki lang="vue-html" :code="code" />
+      </div>
+    </UModal>
   </ClientOnly>
 </template>
 <style scoped>
