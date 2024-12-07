@@ -28,6 +28,7 @@ const clothingComponent = computed(() => ({
 
 <template>
   <component
+    v-if="clothingComponent !== null"
     :is="clothingComponent"
     :color="color"
     :position="position"

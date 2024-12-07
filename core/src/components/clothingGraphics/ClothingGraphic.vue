@@ -25,5 +25,8 @@ const clothingGraphicComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="clothingGraphicComponent" />
+  <component 
+    v-if="clothingGraphicComponent !== null"
+    :is="clothingGraphicComponent" 
+  />
 </template>

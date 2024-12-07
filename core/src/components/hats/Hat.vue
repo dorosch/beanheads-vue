@@ -24,6 +24,7 @@ const hatComponent = computed(() => ({
 
 <template>
   <component
+    v-if="hatComponent !== null"
     :is="hatComponent"
     :position="position"
     :color="color"

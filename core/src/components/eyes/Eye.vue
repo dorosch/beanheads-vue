@@ -33,5 +33,9 @@ const eyeComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="eyeComponent" :with-lashes="withLashes" />
+  <component 
+    v-if="eyeComponent !== null"
+    :is="eyeComponent" 
+    :with-lashes="withLashes"
+  />
 </template>

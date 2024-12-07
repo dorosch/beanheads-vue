@@ -40,6 +40,7 @@ const hairComponent = computed(() => {
 
 <template>
   <component
+    v-if="hairComponent !== null"
     :is="hairComponent"
     :position="position"
     :color="color"

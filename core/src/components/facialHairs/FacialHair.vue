@@ -21,5 +21,9 @@ const facialHairComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="facialHairComponent" :color="color" />
+  <component 
+    v-if="facialHairComponent !== null"
+    :is="facialHairComponent" 
+    :color="color" 
+  />
 </template>

@@ -21,5 +21,8 @@ const accessoryComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="accessoryComponent"/>
+  <component 
+    v-if="accessoryComponent !== null"
+    :is="accessoryComponent"
+  />
 </template>

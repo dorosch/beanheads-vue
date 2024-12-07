@@ -25,5 +25,8 @@ const eyebrowsComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="eyebrowsComponent"/>
+  <component 
+    v-if="eyebrowsComponent !== null"
+    :is="eyebrowsComponent"
+  />
 </template>

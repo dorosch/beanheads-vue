@@ -30,5 +30,9 @@ const mouthComponent = computed(() => {
 </script>
 
 <template>
-  <component :is="mouthComponent" :color="color"/>
+  <component 
+    v-if="mouthComponent !== null"
+    :is="mouthComponent" 
+    :color="color"
+  />
 </template>
