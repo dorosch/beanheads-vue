@@ -68,7 +68,10 @@ const initialOptions: AvatarOptions = {
 }
 
 const options = useUrlSearchParams('history', {
-  initialValue: structuredClone(initialOptions)
+  initialValue: {
+    size: '250',
+    ...structuredClone(initialOptions),
+  }
 })
 
 function randomizeAvatar() {
@@ -133,8 +136,8 @@ function resetAvatar() {
 
 const isOpen = ref(false)
 const code = computed(() => (`<Avatar
-  width="250"
-  height="250"
+  width="${options.size}"
+  height="${options.size}"
   :mask="${options.mask === 'true'}"
   skin="${options.skin}"
   body="${options.body}"
@@ -170,6 +173,22 @@ function downloadSVG() {
   a.href = url
   a.download = 'avatar.svg'
   a.click()
+}
+
+const tempSize = ref('250')
+const { pause, resume} = syncRefs(() => options.size, tempSize)
+
+function applySize() {
+  if (Number(tempSize.value) < 8) {
+    tempSize.value = '8'
+  }
+  if (Number(tempSize.value) > 300) {
+    tempSize.value = '300'
+  }
+
+  pause()
+  options.size = tempSize.value
+  resume()
 }
 </script>
 <template>
@@ -219,12 +238,17 @@ function downloadSVG() {
           flex 
           justify-center 
           items-center
+          min-h-[15.625rem]
+          max-h-[18.75rem]
+          flex-shrink-0
+          md:min-h-none
+          md:max-h-none
           md:flex-grow
         ">
           <div ref="avatarWrapper">
             <Avatar
-              width="250"
-              height="250"
+              :width="options.size"
+              :height="options.size"
               :mask="options.mask === 'true'"
               :skin="options.skin"
               :body="options.body"
@@ -270,6 +294,28 @@ function downloadSVG() {
           "
         >
           <div class="flex flex-col gap-6">
+            <div>
+              <h3 class="text-base font-semibold mb-2">Size</h3>
+              <div class="flex gap-2 items-center">
+                <URange 
+                  :model-value="Number(options.size)"
+                  @update:model-value="options.size = $event.toString()"
+                  :min="8"
+                  :max="300"
+                  class="flex-grow"
+                />
+                <UInput 
+                  type="number"
+                  v-model="tempSize"
+                  @change="() => applySize()"
+                  class="w-24 flex-shrink-0"
+                >
+                  <template #trailing>
+                    <span class="text-gray-500 dark:text-gray-400 text-xs">px</span>
+                  </template>
+                </UInput>
+              </div>
+            </div>
             <div class="flex gap-2 justify-end items-center">
               <UCheckbox 
                 label="Use mask" 
