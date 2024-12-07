@@ -181,25 +181,38 @@ function downloadSVG() {
     <main 
       class="flex flex-col gap-3 h-screen md:w-[50rem] mx-auto"
     >
-      <div class="h-12 flex-shrink-0 flex justify-end p-2 gap-2">
-        <UButton
-          icon="i-heroicons-outline:download"
-          size="sm"
-          color="gray"
-          square
-          variant="ghost"
-          class="flex-shrink-0"
-          @click="() => downloadSVG()"
-        />
-        <UButton
-          icon="i-heroicons:code-bracket-16-solid"
-          size="sm"
-          color="gray"
-          square
-          variant="ghost"
-          class="flex-shrink-0"
-          @click="() => isOpen = true"
-        />
+      <div class="h-12 flex items-center p-2">
+        <NuxtLink to="/">
+          <UButton
+            type="button"
+            icon="i-heroicons-outline:chevron-left"
+            size="sm"
+            color="gray"
+            square
+            variant="ghost"
+          />
+        </NuxtLink>
+        <h1 class="text-lg font-bold text-gray-800">Beanheads Vue</h1>
+        <div class="ml-auto flex-shrink-0 flex justify-end gap-2">
+          <UButton
+            icon="i-heroicons-outline:download"
+            size="sm"
+            color="gray"
+            square
+            variant="ghost"
+            class="flex-shrink-0"
+            @click="() => downloadSVG()"
+          />
+          <UButton
+            icon="i-heroicons:code-bracket-16-solid"
+            size="sm"
+            color="gray"
+            square
+            variant="ghost"
+            class="flex-shrink-0"
+            @click="() => isOpen = true"
+          />
+        </div>
       </div>
       <div class="flex-grow flex flex-col overflow-auto">
         <div class="flex justify-center items-center">
@@ -229,7 +242,7 @@ function downloadSVG() {
             />
           </div>
         </div>
-        <div class="flex-grow p-5 rounded-t-2xl border-t border-gray-200 shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] overflow-auto">
+        <div class="flex-grow p-5 rounded-t-2xl border-t border-gray-300 shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] overflow-auto">
           <div class="flex flex-col gap-6">
             <div class="flex gap-2 justify-end items-center">
               <UCheckbox 
@@ -400,31 +413,31 @@ function downloadSVG() {
               <div class="flex gap-2 flex-wrap">
                 <label>
                   <input type="radio" value="blonde" v-model="options.hairColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#FEDC58] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#FEDC58] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="orange" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#D96E27] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#D96E27] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="black" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#592d3d] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#592d3d] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="white" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#ffffff] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#ffffff] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="brown" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#A56941] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#A56941] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="blue" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="pink" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#D69AC7] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#D69AC7] border border-gray-600"></div>
                 </label>
               </div>
             </div>
@@ -450,23 +463,23 @@ function downloadSVG() {
               <div class="flex gap-2 flex-wrap">
                 <label>
                   <input type="radio" value="white" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-white border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="blue" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="black" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="green" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="red" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-600"></div>
                 </label>
               </div>
             </div>
@@ -521,23 +534,23 @@ function downloadSVG() {
               <div class="flex gap-2 flex-wrap">
                 <label>
                   <input type="radio" value="white" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-white border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="blue" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="black" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="green" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="red" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-600"></div>
                 </label>
               </div>
             </div>
@@ -556,23 +569,23 @@ function downloadSVG() {
               <div class="flex gap-2 flex-wrap">
                 <label>
                   <input type="radio" value="white" v-model="options.faceMaskColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-white border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="blue" v-model="options.faceMaskColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="black" v-model="options.faceMaskColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="green" v-model="options.faceMaskColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-600"></div>
                 </label>
                 <label>
                   <input type="radio" value="red" v-model="options.faceMaskColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-600"></div>
                 </label>
               </div>
             </div>
