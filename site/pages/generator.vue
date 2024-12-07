@@ -179,9 +179,9 @@ function downloadSVG() {
   -->
   <ClientOnly>
     <main 
-      class="flex flex-col gap-3 h-screen md:w-[50rem] mx-auto"
+      class="flex flex-col gap-3 h-screen md:flex-row"
     >
-      <div class="h-12 flex items-center p-2">
+      <div class="h-12 flex items-center p-2 md:fixed md:top-0 md:left-0 md:w-[calc(100%-20rem)]">
         <NuxtLink to="/">
           <UButton
             type="button"
@@ -214,8 +214,13 @@ function downloadSVG() {
           />
         </div>
       </div>
-      <div class="flex-grow flex flex-col overflow-auto">
-        <div class="flex justify-center items-center">
+      <div class="flex-grow flex flex-col overflow-auto md:flex-row">
+        <div class="
+          flex 
+          justify-center 
+          items-center
+          md:flex-grow
+        ">
           <div ref="avatarWrapper">
             <Avatar
               width="250"
@@ -242,7 +247,28 @@ function downloadSVG() {
             />
           </div>
         </div>
-        <div class="flex-grow p-5 rounded-t-2xl border-t border-gray-300 shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] overflow-auto">
+        <div 
+          class="
+            flex-grow 
+            p-5 
+            rounded-t-2xl 
+            border-t 
+            border-gray-300 
+            shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] 
+            overflow-auto
+            md:rounded-none 
+            md:shadow-none
+            md:relative
+            md:top-0
+            md:right-0
+            md:w-[20rem]
+            md:max-w-[20rem]
+            md:h-screen
+            md:border-t-0
+            md:border-l
+            md:border-gray-300
+          "
+        >
           <div class="flex flex-col gap-6">
             <div class="flex gap-2 justify-end items-center">
               <UCheckbox 
