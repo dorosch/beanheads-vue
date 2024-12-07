@@ -11,6 +11,7 @@ import { type FacialHairType } from '../../core/src/components/facialHairs/Facia
 import { type HairType } from '../../core/src/components/hairs/Hair.vue';
 import { type HatType } from '../../core/src/components/hats/Hat.vue';
 import { type MouthType } from '../../core/src/components/mouths/Mouth.vue';
+import { randomizeOptions } from '~/utils/random';
 
 const toast = useToast()
 
@@ -77,59 +78,8 @@ const options = useUrlSearchParams('history', {
 })
 
 function randomizeAvatar() {
-  // Randomly pick skin tone
-  options.skin = ['light', 'dark', 'yellow', 'brown', 'red', 'black'][Math.floor(Math.random() * 6)] as keyof typeof colors.skin
-
-  // Randomly pick body type
-  options.body = ['chest', 'breasts'][Math.floor(Math.random() * 2)] as BodyType
-
-  // Randomly pick eye type
-  options.eye = ['normal-eyes', 'content-eyes', 'dizzy-eyes', 'happy-eyes', 'heart-eyes', 'left-twitch-eyes'][Math.floor(Math.random() * 6)] as EyeType
-
-  // Randomly pick eyelashes
-  options.withLashes = Math.random() < 0.5 ? 'true' : 'false'
-
-  // Randomly pick eyebrows
-  options.eyebrows = ['none', 'normal', 'serious', 'left-lowered', 'angry', 'concerned'][Math.floor(Math.random() * 6)] as EyebrowsType
-
-  // Randomly pick mouth
-  options.mouth = ['grin', 'sad', 'serious', 'open', 'tongue'][Math.floor(Math.random() * 5)] as MouthType
-
-  // Randomly pick lip color
-  options.lipColor = ['red', 'purple', 'pink', 'turquoise', 'green'][Math.floor(Math.random() * 5)] as keyof typeof colors.lipColors
-
-  // Randomly pick facial hair
-  options.facialHair = ['none', 'stubble', 'medium-beard'][Math.floor(Math.random() * 3)] as FacialHairType 
-
-  // Randomly pick hair style
-  options.hair = ['none', 'afro', 'balding', 'bob', 'bun', 'buzz', 'long', 'pixie', 'short'][Math.floor(Math.random() * 9)] as HairType 
-
-  // Randomly pick hair color
-  options.hairColor = ['blonde', 'orange', 'black', 'white', 'brown', 'blue', 'pink'][Math.floor(Math.random() * 7)] as keyof typeof colors.hair
-
-  // Randomly pick clothing
-  options.clothing = ['none', 'dress', 'dress-shirt', 'shirt', 'tank-top', 'v-neck'][Math.floor(Math.random() * 6)] as ClothingType
-
-  // Randomly pick clothing color
-  options.clothingColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
-
-  // Randomly pick clothing graphic
-  options.clothingGraphic = ['none', 'redwood', 'vue', 'react', 'gatsby', 'graphql'][Math.floor(Math.random() * 6)] as ClothingGraphicType
-
-  // Randomly pick accessory
-  options.accessory = ['none', 'round-glasses', 'tiny-glasses', 'shades'][Math.floor(Math.random() * 4)] as AccessoryType
-
-  // Randomly pick hat
-  options.hat = ['none', 'beanie', 'turban'][Math.floor(Math.random() * 3)] as HatType
-
-  // Randomly pick hat color
-  options.hatColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
-
-  // Randomly pick face mask
-  options.faceMask = Math.random() < 0.5 ? 'true' : 'false'
-
-  // Randomly pick face mask color
-  options.faceMaskColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
+  const randomOptions = randomizeOptions()
+  Object.assign(options, randomOptions)
 }
 
 function resetAvatar() {
