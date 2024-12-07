@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     preference: 'light',
   },
   shiki: {
-    bundledLangs: ['vue-html']
+    bundledThemes: ['github-light-default', 'github-dark'],
+    bundledLangs: ['vue-html'],
   }
 })

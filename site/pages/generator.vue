@@ -12,6 +12,8 @@ import { type HairType } from '../../core/src/components/hairs/Hair.vue';
 import { type HatType } from '../../core/src/components/hats/Hat.vue';
 import { type MouthType } from '../../core/src/components/mouths/Mouth.vue';
 
+const toast = useToast()
+
 type AvatarOptions = {
   mask: string
   faceMask: string
@@ -161,6 +163,10 @@ const code = computed(() => (`<Avatar
 
 function copyCode() {
   navigator.clipboard.writeText(code.value)
+  toast.add({
+    title: 'Code copied!',
+    description: 'The avatar component code has been copied to your clipboard',
+  })
 }
 
 const avatarWrapper = useTemplateRef('avatarWrapper')
@@ -681,6 +687,7 @@ function applySize() {
         <Shiki 
           lang="vue-html" 
           :code="code" 
+          theme="github-light-default"
         />
       </div>
     </UModal>
