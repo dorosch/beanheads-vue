@@ -211,7 +211,7 @@ function applySize() {
             variant="ghost"
           />
         </NuxtLink>
-        <h1 class="text-lg font-bold text-gray-800">Beanheads Vue</h1>
+        <h1 class="text-lg font-bold text-gray-800 dark:text-gray-200">Beanheads Vue</h1>
         <div class="ml-auto flex-shrink-0 flex justify-end gap-2">
           <UButton
             icon="i-heroicons-outline:download"
@@ -291,6 +291,7 @@ function applySize() {
             md:border-t-0
             md:border-l
             md:border-gray-300
+            dark:border-gray-700
           "
         >
           <div class="flex flex-col gap-6">
