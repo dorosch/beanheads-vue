@@ -132,7 +132,9 @@ function resetAvatar() {
 }
 
 const isOpen = ref(false)
-const code = computed(() => (`<Avatar 
+const code = computed(() => (`<Avatar
+  width="250"
+  height="250"
   :mask="${options.mask === 'true'}"
   skin="${options.skin}"
   body="${options.body}"
@@ -157,6 +159,18 @@ const code = computed(() => (`<Avatar
 function copyCode() {
   navigator.clipboard.writeText(code.value)
 }
+
+const avatarWrapper = useTemplateRef('avatarWrapper')
+function downloadSVG() {
+  const svg = avatarWrapper.value?.innerHTML
+  if (!svg) return
+  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'avatar.svg'
+  a.click()
+}
 </script>
 <template>
   <!-- 
@@ -165,393 +179,402 @@ function copyCode() {
   -->
   <ClientOnly>
     <main 
-      class="flex flex-col gap-4 h-screen md:w-[50rem] mx-auto"
+      class="flex flex-col gap-3 h-screen md:w-[50rem] mx-auto"
     >
-      <div class="h-12 flex-shrink-0 flex justify-end p-2">
+      <div class="h-12 flex-shrink-0 flex justify-end p-2 gap-2">
         <UButton
-          icon="i-heroicons:code-bracket-16-solid"
+          icon="i-heroicons-outline:download"
           size="sm"
-          color="primary"
+          color="gray"
           square
           variant="ghost"
           class="flex-shrink-0"
-          @click="isOpen = true"
+          @click="() => downloadSVG()"
+        />
+        <UButton
+          icon="i-heroicons:code-bracket-16-solid"
+          size="sm"
+          color="gray"
+          square
+          variant="ghost"
+          class="flex-shrink-0"
+          @click="() => isOpen = true"
         />
       </div>
-      <div class="h-2/5 flex justify-center items-center">
-        <Avatar 
-          width="250"
-          :mask="options.mask === 'true'"
-          :skin="options.skin"
-          :body="options.body"
-          :eye="options.eye"
-          :with-lashes="options.withLashes === 'true'"
-          :eyebrows="options.eyebrows"
-          :mouth="options.mouth"
-          :lip-color="options.lipColor"
-          :facial-hair="options.facialHair"
-          :hair="options.hair"
-          :hair-color="options.hairColor"
-          :clothing="options.clothing"
-          :clothing-color="options.clothingColor"
-          :clothing-graphic="options.clothingGraphic"
-          :hat="options.hat"
-          :hat-color="options.hatColor"
-          :accessory="options.accessory"
-          :face-mask="options.faceMask === 'true'"
-          :face-mask-color="options.faceMaskColor"
-        />
-      </div>
-      <div class="flex-grow p-5 rounded-t-2xl border-t border-gray-200 shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] overflow-auto">
-        <div class="flex flex-col gap-6">
-          <div class="flex gap-2">
-            <!-- Randomize Avatar -->
-            <UButton 
-              type="button" 
-              @click="randomizeAvatar"
-            >
-              Randomize
-            </UButton>
-
-            <!-- Reset Avatar -->
-            <UButton 
-              type="button" 
-              variant="outline"
-              @click="resetAvatar"
-            >
-              Reset
-            </UButton>
+      <div class="flex-grow flex flex-col overflow-auto">
+        <div class="flex justify-center items-center">
+          <div ref="avatarWrapper">
+            <Avatar
+              width="250"
+              height="250"
+              :mask="options.mask === 'true'"
+              :skin="options.skin"
+              :body="options.body"
+              :eye="options.eye"
+              :with-lashes="options.withLashes === 'true'"
+              :eyebrows="options.eyebrows"
+              :mouth="options.mouth"
+              :lip-color="options.lipColor"
+              :facial-hair="options.facialHair"
+              :hair="options.hair"
+              :hair-color="options.hairColor"
+              :clothing="options.clothing"
+              :clothing-color="options.clothingColor"
+              :clothing-graphic="options.clothingGraphic"
+              :hat="options.hat"
+              :hat-color="options.hatColor"
+              :accessory="options.accessory"
+              :face-mask="options.faceMask === 'true'"
+              :face-mask-color="options.faceMaskColor"
+            />
           </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Mask</h3>
-            <div>
-              <UToggle 
+        </div>
+        <div class="flex-grow p-5 rounded-t-2xl border-t border-gray-200 shadow-[0_0px_2px_0px_rgba(0,0,0,0.1)] overflow-auto">
+          <div class="flex flex-col gap-6">
+            <div class="flex gap-2 justify-end items-center">
+              <UCheckbox 
+                label="Use mask" 
                 :model-value="options.mask === 'true'"
                 @update:model-value="options.mask = $event ? 'true' : 'false'"
-                size="xl"
+                class="mr-auto"
               />
+              <!-- Reset Avatar -->
+              <UButton 
+                type="button" 
+                variant="outline"
+                @click="() => resetAvatar()"
+              >
+                Reset
+              </UButton>
+              <!-- Randomize Avatar -->
+              <UButton 
+                type="button" 
+                @click="() => randomizeAvatar()"
+              >
+                Randomize
+              </UButton>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Skin</h3>
             <div>
-              <USelectMenu
-                v-model="options.skin" 
-                :options="[
-                  { label: 'Light', value: 'light' },
-                  { label: 'Dark', value: 'dark' },
-                  { label: 'Yellow', value: 'yellow' },
-                  { label: 'Brown', value: 'brown' },
-                  { label: 'Red', value: 'red' },
-                  { label: 'Black', value: 'black' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Skin</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.skin" 
+                  :options="[
+                    { label: 'Light', value: 'light' },
+                    { label: 'Dark', value: 'dark' },
+                    { label: 'Yellow', value: 'yellow' },
+                    { label: 'Brown', value: 'brown' },
+                    { label: 'Red', value: 'red' },
+                    { label: 'Black', value: 'black' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Body</h3>
             <div>
-              <USelectMenu
-                v-model="options.body" 
-                :options="[
-                  { label: 'Chest', value: 'chest' },
-                  { label: 'Breasts', value: 'breasts' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Body</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.body" 
+                  :options="[
+                    { label: 'Chest', value: 'chest' },
+                    { label: 'Breasts', value: 'breasts' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Eye</h3>
             <div>
-              <USelectMenu
-                v-model="options.eye" 
-                :options="[
-                  { label: 'Normal Eyes', value: 'normal-eyes' },
-                  { label: 'Content Eyes', value: 'content-eyes' },
-                  { label: 'Dizzy Eyes', value: 'dizzy-eyes' },
-                  { label: 'Happy Eyes', value: 'happy-eyes' },
-                  { label: 'Heart Eyes', value: 'heart-eyes' },
-                  { label: 'Left Twitch Eyes', value: 'left-twitch-eyes' },
-                ]" 
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Eye</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.eye" 
+                  :options="[
+                    { label: 'Normal Eyes', value: 'normal-eyes' },
+                    { label: 'Content Eyes', value: 'content-eyes' },
+                    { label: 'Dizzy Eyes', value: 'dizzy-eyes' },
+                    { label: 'Happy Eyes', value: 'happy-eyes' },
+                    { label: 'Heart Eyes', value: 'heart-eyes' },
+                    { label: 'Left Twitch Eyes', value: 'left-twitch-eyes' },
+                  ]" 
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">With Lashes</h3>
             <div>
-              <UToggle 
-                :model-value="options.withLashes === 'true'"
-                @update:model-value="options.withLashes = $event ? 'true' : 'false'"
-                size="xl"
-              />
+              <h3 class="text-base font-semibold mb-2">With Lashes</h3>
+              <div>
+                <UToggle 
+                  :model-value="options.withLashes === 'true'"
+                  @update:model-value="options.withLashes = $event ? 'true' : 'false'"
+                  size="xl"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Eyebrows</h3>
             <div>
-              <USelectMenu
-                v-model="options.eyebrows" 
-                :options="[
-                  { label: 'None', value: 'none' },
-                  { label: 'Normal', value: 'normal' },
-                  { label: 'Serious', value: 'serious' },
-                  { label: 'Left Lowered', value: 'left-lowered' },
-                  { label: 'Angry', value: 'angry' },
-                  { label: 'Concerned', value: 'concerned' },
-                ]" 
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Eyebrows</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.eyebrows" 
+                  :options="[
+                    { label: 'None', value: 'none' },
+                    { label: 'Normal', value: 'normal' },
+                    { label: 'Serious', value: 'serious' },
+                    { label: 'Left Lowered', value: 'left-lowered' },
+                    { label: 'Angry', value: 'angry' },
+                    { label: 'Concerned', value: 'concerned' },
+                  ]" 
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Mouth</h3>
             <div>
-              <USelectMenu
-                v-model="options.mouth" 
-                :options="[
-                  { label: 'Grin', value: 'grin' },
-                  { label: 'Lips', value: 'lips' },
-                  { label: 'Sad', value: 'sad' },
-                  { label: 'Serious', value: 'serious' },
-                  { label: 'Open', value: 'open' },
-                  { label: 'Tongue', value: 'tongue' },
-                ]" 
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Mouth</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.mouth" 
+                  :options="[
+                    { label: 'Grin', value: 'grin' },
+                    { label: 'Lips', value: 'lips' },
+                    { label: 'Sad', value: 'sad' },
+                    { label: 'Serious', value: 'serious' },
+                    { label: 'Open', value: 'open' },
+                    { label: 'Tongue', value: 'tongue' },
+                  ]" 
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Lip Color</h3>
             <div>
-              <USelectMenu
-                v-model="options.lipColor" 
-                :options="[
-                  { label: 'Red', value: 'red' },
-                  { label: 'Purple', value: 'purple' },
-                  { label: 'Pink', value: 'pink' },
-                  { label: 'Turquoise', value: 'turquoise' },
-                  { label: 'Green', value: 'green' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Lip Color</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.lipColor" 
+                  :options="[
+                    { label: 'Red', value: 'red' },
+                    { label: 'Purple', value: 'purple' },
+                    { label: 'Pink', value: 'pink' },
+                    { label: 'Turquoise', value: 'turquoise' },
+                    { label: 'Green', value: 'green' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Facial Hair</h3>
             <div>
-              <USelectMenu
-                v-model="options.facialHair" 
-                :options="[
-                  { label: 'None', value: 'none' },
-                  { label: 'Stubble', value: 'stubble' },
-                  { label: 'Medium Beard', value: 'medium-beard' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Facial Hair</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.facialHair" 
+                  :options="[
+                    { label: 'None', value: 'none' },
+                    { label: 'Stubble', value: 'stubble' },
+                    { label: 'Medium Beard', value: 'medium-beard' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Hair</h3>
             <div>
-              <USelectMenu
-                v-model="options.hair" 
-                :options="[
-                  { label: 'None', value: 'none' },
-                  { label: 'Afro', value: 'afro' },
-                  { label: 'Balding', value: 'balding' },
-                  { label: 'Bob', value: 'bob' },
-                  { label: 'Bun', value: 'bun' },
-                  { label: 'Buzz', value: 'buzz' },
-                  { label: 'Long', value: 'long' },
-                  { label: 'Pixie', value: 'pixie' },
-                  { label: 'Short', value: 'short' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Hair</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.hair" 
+                  :options="[
+                    { label: 'None', value: 'none' },
+                    { label: 'Afro', value: 'afro' },
+                    { label: 'Balding', value: 'balding' },
+                    { label: 'Bob', value: 'bob' },
+                    { label: 'Bun', value: 'bun' },
+                    { label: 'Buzz', value: 'buzz' },
+                    { label: 'Long', value: 'long' },
+                    { label: 'Pixie', value: 'pixie' },
+                    { label: 'Short', value: 'short' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Hair Color</h3>
-            <div class="flex gap-2 flex-wrap">
-              <label>
-                <input type="radio" value="blonde" v-model="options.hairColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#FEDC58] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="orange" v-model="options.hairColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#D96E27] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="black" v-model="options.hairColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#592d3d] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="white" v-model="options.hairColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#ffffff] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="brown" v-model="options.hairColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#A56941] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="blue" v-model="options.hairColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="pink" v-model="options.hairColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#D69AC7] border border-gray-200"></div>
-              </label>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Clothing</h3>
             <div>
-              <USelectMenu
-                v-model="options.clothing" 
-                :options="[
-                  { label: 'Naked', value: 'none' },
-                  { label: 'Dress', value: 'dress' },
-                  { label: 'Dress Shirt', value: 'dress-shirt' },
-                  { label: 'Shirt', value: 'shirt' },
-                  { label: 'Tank Top', value: 'tank-top' },
-                  { label: 'V-Neck', value: 'v-neck' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Hair Color</h3>
+              <div class="flex gap-2 flex-wrap">
+                <label>
+                  <input type="radio" value="blonde" v-model="options.hairColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#FEDC58] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="orange" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#D96E27] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="black" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#592d3d] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="white" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#ffffff] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="brown" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#A56941] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="blue" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="pink" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#D69AC7] border border-gray-200"></div>
+                </label>
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Clothing Color</h3>
-            <div class="flex gap-2 flex-wrap">
-              <label>
-                <input type="radio" value="white" v-model="options.clothingColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="blue" v-model="options.clothingColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="black" v-model="options.clothingColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="green" v-model="options.clothingColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="red" v-model="options.clothingColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
-              </label>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Clothing Graphic</h3>
             <div>
-              <USelectMenu
-                v-model="options.clothingGraphic" 
-                :options="[
-                  { label: 'None', value: 'none' },
-                  { label: 'Redwood', value: 'redwood' },
-                  { label: 'Vue', value: 'vue' },
-                  { label: 'React', value: 'react' },
-                  { label: 'Gatsby', value: 'gatsby' },
-                  { label: 'GraphQL', value: 'graphql' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Clothing</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.clothing" 
+                  :options="[
+                    { label: 'Naked', value: 'none' },
+                    { label: 'Dress', value: 'dress' },
+                    { label: 'Dress Shirt', value: 'dress-shirt' },
+                    { label: 'Shirt', value: 'shirt' },
+                    { label: 'Tank Top', value: 'tank-top' },
+                    { label: 'V-Neck', value: 'v-neck' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Accessory</h3>
             <div>
-              <USelectMenu
-                v-model="options.accessory" 
-                :options="[
-                  { label: 'None', value: 'none' },
-                  { label: 'Round Glasses', value: 'round-glasses' },
-                  { label: 'Tiny Glasses', value: 'tiny-glasses' },
-                  { label: 'Shades', value: 'shades' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Clothing Color</h3>
+              <div class="flex gap-2 flex-wrap">
+                <label>
+                  <input type="radio" value="white" v-model="options.clothingColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="blue" v-model="options.clothingColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="black" v-model="options.clothingColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="green" v-model="options.clothingColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="red" v-model="options.clothingColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
+                </label>
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Hat</h3>
             <div>
-              <USelectMenu
-                v-model="options.hat" 
-                :options="[
-                  { label: 'None', value: 'none' },
-                  { label: 'Beanie', value: 'beanie' },
-                  { label: 'Turban', value: 'turban' },
-                ]"
-                value-attribute="value"
-              />
+              <h3 class="text-base font-semibold mb-2">Clothing Graphic</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.clothingGraphic" 
+                  :options="[
+                    { label: 'None', value: 'none' },
+                    { label: 'Redwood', value: 'redwood' },
+                    { label: 'Vue', value: 'vue' },
+                    { label: 'React', value: 'react' },
+                    { label: 'Gatsby', value: 'gatsby' },
+                    { label: 'GraphQL', value: 'graphql' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Hat Color</h3>
-            <div class="flex gap-2 flex-wrap">
-              <label>
-                <input type="radio" value="white" v-model="options.hatColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="blue" v-model="options.hatColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="black" v-model="options.hatColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="green" v-model="options.hatColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="red" v-model="options.hatColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
-              </label>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Face Mask</h3>
             <div>
-              <UToggle 
-                :model-value="options.faceMask === 'true'"
-                @update:model-value="options.faceMask = $event ? 'true' : 'false'"
-                size="xl"
-              />
+              <h3 class="text-base font-semibold mb-2">Accessory</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.accessory" 
+                  :options="[
+                    { label: 'None', value: 'none' },
+                    { label: 'Round Glasses', value: 'round-glasses' },
+                    { label: 'Tiny Glasses', value: 'tiny-glasses' },
+                    { label: 'Shades', value: 'shades' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-base font-semibold mb-2">Face Mask Color</h3>
-            <div class="flex gap-2 flex-wrap">
-              <label>
-                <input type="radio" value="white" v-model="options.faceMaskColor" class="hidden"/>
-                <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="blue" v-model="options.faceMaskColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="black" v-model="options.faceMaskColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="green" v-model="options.faceMaskColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
-              </label>
-              <label>
-                <input type="radio" value="red" v-model="options.faceMaskColor" class="hidden" />
-                <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
-              </label>
+            <div>
+              <h3 class="text-base font-semibold mb-2">Hat</h3>
+              <div>
+                <USelectMenu
+                  v-model="options.hat" 
+                  :options="[
+                    { label: 'None', value: 'none' },
+                    { label: 'Beanie', value: 'beanie' },
+                    { label: 'Turban', value: 'turban' },
+                  ]"
+                  value-attribute="value"
+                />
+              </div>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold mb-2">Hat Color</h3>
+              <div class="flex gap-2 flex-wrap">
+                <label>
+                  <input type="radio" value="white" v-model="options.hatColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="blue" v-model="options.hatColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="black" v-model="options.hatColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="green" v-model="options.hatColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="red" v-model="options.hatColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
+                </label>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold mb-2">Face Mask</h3>
+              <div>
+                <UToggle 
+                  :model-value="options.faceMask === 'true'"
+                  @update:model-value="options.faceMask = $event ? 'true' : 'false'"
+                  size="xl"
+                />
+              </div>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold mb-2">Face Mask Color</h3>
+              <div class="flex gap-2 flex-wrap">
+                <label>
+                  <input type="radio" value="white" v-model="options.faceMaskColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="blue" v-model="options.faceMaskColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="black" v-model="options.faceMaskColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="green" v-model="options.faceMaskColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-200"></div>
+                </label>
+                <label>
+                  <input type="radio" value="red" v-model="options.faceMaskColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-200"></div>
+                </label>
+              </div>
             </div>
           </div>
         </div>
