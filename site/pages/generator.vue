@@ -486,31 +486,31 @@ function applySize() {
               <div class="flex gap-2 flex-wrap">
                 <label>
                   <input type="radio" value="blonde" v-model="options.hairColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#FEDC58] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#FEDC58] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="orange" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#D96E27] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#D96E27] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="black" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#592d3d] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#592d3d] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="white" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#ffffff] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#ffffff] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="brown" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#A56941] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#A56941] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="blue" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="pink" v-model="options.hairColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#D69AC7] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#D69AC7] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
               </div>
             </div>
@@ -536,23 +536,23 @@ function applySize() {
               <div class="flex gap-2 flex-wrap">
                 <label>
                   <input type="radio" value="white" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-white border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-white border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="blue" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="black" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="green" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="red" v-model="options.clothingColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
               </div>
             </div>
@@ -607,23 +607,23 @@ function applySize() {
               <div class="flex gap-2 flex-wrap">
                 <label>
                   <input type="radio" value="white" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-white border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-white border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="blue" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="black" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="green" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="red" v-model="options.hatColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
               </div>
             </div>
@@ -642,23 +642,23 @@ function applySize() {
               <div class="flex gap-2 flex-wrap">
                 <label>
                   <input type="radio" value="white" v-model="options.faceMaskColor" class="hidden"/>
-                  <div class="w-8 h-8 rounded-full bg-white border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-white border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="blue" v-model="options.faceMaskColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#85c5e5] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="black" v-model="options.faceMaskColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#633749] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#633749] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="green" v-model="options.faceMaskColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#89d86f] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
                 <label>
                   <input type="radio" value="red" v-model="options.faceMaskColor" class="hidden" />
-                  <div class="w-8 h-8 rounded-full bg-[#d67070] border border-gray-600"></div>
+                  <div class="w-8 h-8 rounded-full bg-[#d67070] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
               </div>
             </div>
