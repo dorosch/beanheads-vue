@@ -676,8 +676,11 @@ function applySize() {
         class="flex-shrink-0 absolute top-3 right-3"
         @click="() => copyCode()"
       />
-      <div class="p-4">
-        <Shiki lang="vue-html" :code="code" />
+      <div class="min-h-24 p-4">
+        <Shiki 
+          lang="vue-html" 
+          :code="code" 
+        />
       </div>
     </UModal>
   </ClientOnly>
