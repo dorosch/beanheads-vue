@@ -92,17 +92,22 @@ import { Avatar } from 'beanheads-vue'
       <h2 class="text-2xl font-bold mb-4">Getting Started</h2>
       <p class="mb-2">Install Beanheads Vue with your preferred package manager to get started.</p>
       <div class="bg-gray-100 p-4 rounded-lg mb-4">
-        <Shiki 
-          lang="bash"
-          :code="codes[0]"
-        />
+        <!-- Using ClientOnly since Shiki only works on client-side rendering -->
+        <ClientOnly>
+          <Shiki 
+            lang="bash"
+            :code="codes[0]"
+          />
+        </ClientOnly>
       </div>
       <p class="mb-2">then, in your app:</p>
       <div class="bg-gray-100 p-4 rounded-lg overflow-auto">
-        <Shiki 
-          lang="vue" 
-          :code="codes[1]"
-        />
+        <ClientOnly>
+          <Shiki 
+            lang="vue" 
+            :code="codes[1]"
+          />
+        </ClientOnly>
       </div>
     </div>
   </main>
