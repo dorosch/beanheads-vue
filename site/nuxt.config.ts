@@ -16,6 +16,6 @@ export default defineNuxtConfig({
   },
   shiki: {
     bundledThemes: ['github-light-default', 'github-dark'],
-    bundledLangs: ['vue-html'],
+    bundledLangs: ['vue-html', 'bash'],
   }
 })

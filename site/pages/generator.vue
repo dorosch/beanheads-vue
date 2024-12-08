@@ -72,7 +72,7 @@ const initialOptions: AvatarOptions = {
 
 const options = useUrlSearchParams('history', {
   initialValue: {
-    size: '250',
+    size: '300',
     ...structuredClone(initialOptions),
   }
 })
