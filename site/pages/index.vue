@@ -90,9 +90,9 @@ import { Beanhead } from 'beanheads-vue'
     </div>
     <div class="mx-auto py-8 md:w-[50rem] md:py-16">
       <h2 class="text-2xl font-bold mb-4">Getting Started</h2>
-      <p class="mb-2">Install Beanheads Vue with your preferred package manager to get started.</p>
+      <p class="mb-2">Install Beanheads Vue with your preferred package manager.</p>
       <div class="bg-gray-100 p-4 rounded-lg mb-4">
-        <!-- Using ClientOnly since Shiki only works on client-side rendering -->
+        <!-- Note: Nuxt is downgraded to 3.12.3 since Shiki has server compatibility issues -->
         <Shiki 
           lang="bash"
           :code="codes[0]"
