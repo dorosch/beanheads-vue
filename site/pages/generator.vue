@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar } from 'beanheads-vue'
+import { Beanhead } from 'beanheads-vue'
 import { colors } from '../../core/src/constants/theme'
 import { type AccessoryType } from '../../core/src/components/accessories/Accessory.vue';
 import { type BodyType } from '../../core/src/components/bodies/Body.vue';
@@ -15,7 +15,7 @@ import { randomizeOptions } from '~/utils/random';
 
 const toast = useToast()
 
-type AvatarOptions = {
+type BeanheadOptions = {
   mask: string
   faceMask: string
   faceMaskColor: keyof typeof colors.clothing
@@ -37,7 +37,7 @@ type AvatarOptions = {
   accessory: AccessoryType
 }
 
-const initialOptions: AvatarOptions = {
+const initialOptions: BeanheadOptions = {
   // Layout
   mask: 'false',
 
@@ -87,7 +87,7 @@ function resetAvatar() {
 }
 
 const isOpen = ref(false)
-const code = computed(() => (`<Avatar
+const code = computed(() => (`<Beanhead
   width="${options.size}"
   height="${options.size}"
   :mask="${options.mask === 'true'}"
@@ -115,7 +115,7 @@ function copyCode() {
   navigator.clipboard.writeText(code.value)
   toast.add({
     title: 'Code copied!',
-    description: 'The avatar component code has been copied to your clipboard',
+    description: 'The Beanhead component code has been copied to your clipboard',
   })
 }
 
@@ -127,7 +127,7 @@ function downloadSVG() {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = 'avatar.svg'
+  a.download = 'beanhead.svg'
   a.click()
 }
 
@@ -202,7 +202,7 @@ function applySize() {
           md:flex-grow
         ">
           <div ref="avatarWrapper">
-            <Avatar
+            <Beanhead
               :width="options.size"
               :height="options.size"
               :mask="options.mask === 'true'"

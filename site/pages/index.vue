@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar } from 'beanheads-vue'
+import { Beanhead } from 'beanheads-vue'
 import { randomizeOptions } from '~/utils/random';
 
 const options = ref(randomizeOptions())
@@ -7,11 +7,11 @@ const options = ref(randomizeOptions())
 const codes = [
   `npm install beanheads-vue`,
   `<script setup>
-import { Avatar } from 'beanheads-vue'
+import { Beanhead } from 'beanheads-vue'
 <\/script>
 
 <template>
-  <Avatar />
+  <Beanhead />
 <\/template>`
 ]
 </script>
@@ -53,7 +53,7 @@ import { Avatar } from 'beanheads-vue'
                 }"
                 class="inline-flex w-[12.5rem] h-[12.5rem]"
               >
-                <Avatar
+                <Beanhead
                   :skin="options.skin"
                   :body="options.body"
                   :eye="options.eye"
