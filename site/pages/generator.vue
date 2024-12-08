@@ -119,7 +119,7 @@ function copyCode() {
   })
 }
 
-const avatarWrapper = useTemplateRef('avatarWrapper')
+const avatarWrapper = ref<HTMLElement | null>(null)
 function downloadSVG() {
   const svg = avatarWrapper.value?.innerHTML
   if (!svg) return
