@@ -18,18 +18,33 @@ import { Beanhead } from 'beanheads-vue'
 <template>
   <main class="px-4 md:px-0">
     <div class="flex flex-col items-center py-8 md:flex-row md:gap-6 mx-auto md:py-10 md:w-[50rem]">
-      <div class="contents flex-grow md:flex flex-col justify-center">
+      <div class="contents flex-grow md:flex md:flex-col md:justify-center">
         <h1 class="w-full text-2xl md:text-3xl font-bold mb-2">Beanheads Vue</h1>
         <p class="text-lg md:text-xl mb-4">Create billions of unique characters by mixing and matching colors, hairstyles, and clothing.</p>
-        <NuxtLink 
-          to="/generator"
-          class="order-last mt-6 md:mt-0"
-        >
-          <UButton 
-            color="primary" 
-            variant="solid"
-          >Build Your Beanhead</UButton>
-        </NuxtLink>
+        <div class="flex items-center gap-2 order-last mt-6 md:mt-0">
+          <NuxtLink 
+            to="/generator"
+          >
+            <UButton 
+              color="primary" 
+              variant="solid"
+              size="lg"
+            >Build Your Beanhead</UButton>
+          </NuxtLink>
+
+          <a 
+            href="https://github.com/Heunsig/beanheads-vue"
+            title="GitHub"
+            target="_blank"
+          >
+            <UButton 
+              icon="i-mdi:github"
+              color="gray" 
+              variant="ghost"
+              size="lg"
+            ></UButton>
+          </a>
+        </div>
       </div>
       <UCard 
         class="w-[18rem] flex-shrink-0"

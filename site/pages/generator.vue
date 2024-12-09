@@ -169,6 +169,18 @@ function applySize() {
         </NuxtLink>
         <h1 class="text-lg font-bold text-gray-800 dark:text-gray-200">Beanheads Vue</h1>
         <div class="ml-auto flex-shrink-0 flex justify-end gap-2">
+          <a 
+            href="https://github.com/Heunsig/beanheads-vue"
+            title="GitHub"
+            target="_blank"
+          >
+            <UButton 
+              icon="i-mdi:github"
+              color="gray" 
+              variant="ghost"
+            ></UButton>
+          </a>
+
           <UButton
             icon="i-heroicons-outline:download"
             size="sm"
@@ -176,6 +188,7 @@ function applySize() {
             square
             variant="ghost"
             class="flex-shrink-0"
+            title="Download SVG"
             @click="() => downloadSVG()"
           />
           <UButton
@@ -185,6 +198,7 @@ function applySize() {
             square
             variant="ghost"
             class="flex-shrink-0"
+            title="Code"
             @click="() => isOpen = true"
           />
         </div>
