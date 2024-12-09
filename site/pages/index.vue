@@ -452,6 +452,10 @@ import { Beanhead } from 'beanheads-vue'
         </table>
       </div>
     </div>
+    <div class="mx-auto py-8 md:w-[50rem] md:py-10">
+      <h2 class="text-2xl font-bold mb-4">License</h2>
+      <p class="mb-2">This project is licensed under the <a href="https://opensource.org/license/MIT" target="_blank">MIT License</a>.</p>
+    </div>
   </main>
 </template>
 
