@@ -123,6 +123,7 @@ import { Beanhead } from 'beanheads-vue'
     </div>
     <div class="mx-auto py-8 md:w-[50rem] md:py-10">
       <h2 class="text-2xl font-bold mb-4">Props</h2>
+      <p class="mb-2">All props are optional.</p>
       <div class="overflow-x-auto">
         <table 
           class="table-fixed w-full min-w-[30rem] props-table"
