@@ -454,7 +454,7 @@ import { Beanhead } from 'beanheads-vue'
     </div>
     <div class="mx-auto py-8 md:w-[50rem] md:py-10">
       <h2 class="text-2xl font-bold mb-4">License</h2>
-      <p class="mb-2">This project is licensed under the <a href="https://opensource.org/license/MIT" target="_blank">MIT License</a>.</p>
+      <p class="mb-2">This project is licensed under the <a href="https://opensource.org/license/MIT" target="_blank" class="text-blue-500 underline">MIT License</a>.</p>
     </div>
   </main>
 </template>
