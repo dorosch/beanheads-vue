@@ -1,7 +1,7 @@
 {
   "name": "beanheads-vue",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
   "type": "module",
   "main": "./dist/beanheads-vue.umd.cjs",
   "module": "./dist/beanheads-vue.js",
