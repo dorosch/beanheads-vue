@@ -25,6 +25,9 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
+
+      - name: Move to core
+        run: cd core
       
       - name: Install dependencies
         run: pnpm install
