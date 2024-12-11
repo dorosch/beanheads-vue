@@ -68,7 +68,7 @@ export const colors = {
       base: '#D69AC7',
       shadow: '#C683B4',
     },
-    turqoise: {
+    turquoise: {
       base: '#5CCBF1',
       shadow: '#49B5CD',
     },
