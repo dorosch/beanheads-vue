@@ -26,17 +26,14 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
-      - name: Move to core
-        run: cd core
-      
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm core install
 
       - name: Build
-        run: pnpm build
+        run: pnpm core build
 
       - name: Publish
-        run: npm publish --access public
+        run: cd core &&npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
