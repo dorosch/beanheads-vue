@@ -1,6 +1,6 @@
 {
   "name": "beanheads-vue",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "type": "module",
   "main": "./dist/beanheads-vue.umd.cjs",
@@ -10,6 +10,11 @@
       "import": "./dist/beanheads-vue.js",
       "require": "./dist/beanheads-vue.umd.cjs"
     }
+  },
+  "homepage": "https://beanheads-vue.heunsig.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Heunsig/beanheads-vue"
   },
   "scripts": {
     "dev": "vite build --watch",
