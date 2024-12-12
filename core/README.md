@@ -1,33 +1,54 @@
 # beanheads-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Easily generate avatars for your projects with Bean Heads Vue.
 
-## Recommended IDE Setup
+> This project is a Vue version inspired by RobertBroersma's React project, [Beanheads](https://github.com/RobertBroersma/beanheads). We deeply respect and appreciate the original work.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Getting Started
 
-## Type Support for `.vue` Imports in TS
+Install Beanheads Vue with your preferred package manager.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-pnpm install
+```bash
+npm install beanheads-vue
 ```
 
-### Compile and Hot-Reload for Development
+then, in your app:
 
-```sh
-pnpm dev
+```vue
+<script setup>
+import { Beanhead } from 'beanheads-vue'
+</script>
+
+<template>
+  <Beanhead />
+</template>
 ```
 
-### Type-Check, Compile and Minify for Production
+## Props
 
-```sh
-pnpm build
-```
+| **Name**            | **Type**                                                                                                                                                                                                                                    | **Default**      |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
+| **mask**            | `boolean`                                                                                                                                                                                                                                  | `false`          |
+| **skin**            | `"light"`, `"yellow"`, `"brown"`, `"dark"`, `"red"`, `"black"`                                                                                                                                                                             | `"light"`        |
+| **body**            | `"chest"`, `"breasts"`                                                                                                                                                                                                                     | `"chest"`        |
+| **eye**             | `"content-eyes"`, `"dizzy-eyes"`, `"happy-eyes"`, `"heart-eyes"`, `"left-twitch-eyes"`, `"normal-eyes"`, `"simple-eyes"`, `"squint-eyes"`, `"wink"`                                                                                       | `"normal-eyes"`  |
+| **with-lashes**     | `boolean`                                                                                                                                                                                                                                  | `false`          |
+| **eyebrows**        | `"none"`, `"normal"`, `"serious"`, `"left-lowered"`, `"angry"`, `"concerned"`                                                                                                                                                              | `"none"`         |
+| **mouth**           | `"grin"`, `"lips"`, `"sad"`, `"serious"`, `"open"`, `"tongue"`                                                                                                                                                                             | `"grin"`         |
+| **lip-color**       | `"red"`, `"purple"`, `"pink"`, `"turquoise"`, `"green"`                                                                                                                                                                                    | `"red"`          |
+| **facial-hair**     | `"none"`, `"stubble"`, `"medium-beard"`                                                                                                                                                                                                    | `"none"`         |
+| **hair**            | `"none"`, `"afro"`, `"balding"`, `"bob"`, `"bun"`, `"buzz"`, `"long"`, `"pixie"`, `"short"`                                                                                                                                                 | `"none"`         |
+| **hair-color**      | `"blonde"`, `"orange"`, `"black"`, `"white"`, `"brown"`, `"blue"`, `"pink"`                                                                                                                                                                | `"white"`        |
+| **clothing**        | `"none"`, `"naked"`, `"dress"`, `"dress-shirt"`, `"shirt"`, `"tank-top"`, `"v-neck"`                                                                                                                                                       | `"none"`         |
+| **clothing-color**  | `"white"`, `"blue"`, `"black"`, `"green"`, `"red"`                                                                                                                                                                                         | `"white"`        |
+| **clothing-graphic**| `"none"`, `"redwood"`, `"vue"`, `"react"`, `"gatsby"`, `"graphql"`                                                                                                                                                                         | `"none"`         |
+| **hat**             | `"none"`, `"beanie"`, `"turban"`                                                                                                                                                                                                           | `"none"`         |
+| **hat-color**       | `"white"`, `"blue"`, `"black"`, `"green"`, `"red"`                                                                                                                                                                                         | `"white"`        |
+| **accessory**       | `"none"`, `"round-glasses"`, `"tiny-glasses"`, `"shades"`                                                                                                                                                                                  | `"none"`         |
+| **face-mask**       | `boolean`                                                                                                                                                                                                                                  | `false`          |
+| **face-mask-color** | `"white"`, `"blue"`, `"black"`, `"green"`, `"red"`                                                                                                                                                                                         | `"white"`        |
+
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/license/MIT).
