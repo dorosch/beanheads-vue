@@ -1,10 +1,10 @@
-# Bean Heads Vue
+# Beanheads Vue
 
 <p align="center">
-  <img alt="Bean Heads Characters" src="./demo/beanheads-demo.gif" width="400"/>
+  <img alt="Beanheads Vue Characters" src="./demo/beanheads-demo.gif" width="400"/>
 </p>
 
-Easily generate avatars for your projects with Bean Heads Vue.
+Easily generate avatars for your projects with Beanheads Vue.
 
 > This project is a Vue version inspired by RobertBroersma's React project, [Beanheads](https://github.com/RobertBroersma/beanheads). We deeply respect and appreciate the original work.
 
