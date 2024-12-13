@@ -8,6 +8,10 @@ Easily generate avatars for your projects with Beanheads Vue.
 
 > This project is a Vue version inspired by RobertBroersma's React project, [Beanheads](https://github.com/RobertBroersma/beanheads). We deeply respect and appreciate the original work.
 
+## Try It Out
+
+Want to see Beanheads Vue in action? Visit our [Beanheads Vue Generator](https://beanheads-vue.heunsig.com) to create and customize your own avatar!
+
 ## Getting Started
 
 Install Beanheads Vue with your preferred package manager.
