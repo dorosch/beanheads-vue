@@ -130,7 +130,7 @@ watch(() => props.skin, (skin) => {
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 1000 990"
+    viewBox="0 0 990 990"
   >
     <Mask v-if="mask" id="mask" />
     <g
