@@ -28,11 +28,28 @@ jobs:
       - name: Build
         run: pnpm core build
 
+      - name: Get package version
+        run: |
+          cd core
+          VERSION=$(node -p "require('./package.json').version")
+          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
+
       - name: Publish
-        run: cd core &&npm publish --access public
+        run: |
+          cd core
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.PACKAGE_VERSION }}
+          release_name: v${{ env.PACKAGE_VERSION }}
+          draft: true
+
 
       
         
