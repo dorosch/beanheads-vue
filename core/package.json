@@ -1,6 +1,6 @@
 {
   "name": "beanheads-vue",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": false,
   "type": "module",
   "main": "./dist/beanheads-vue.umd.cjs",
