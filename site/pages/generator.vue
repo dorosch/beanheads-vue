@@ -275,7 +275,7 @@ function applySize() {
             <div>
               <h3 class="text-base font-semibold mb-1">Size</h3>
               <p class="text-sm text-gray-500 dark:text-gray-400 mb-2 leading-4">
-                Size controls the width of the SVG avatar in pixels.
+                Size controls the width of the SVG avatar in pixels. ({{ MIN_SIZE }}px - {{ MAX_SIZE }}px)
               </p>
               <div class="flex gap-2 items-center">
                 <URange 
