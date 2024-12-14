@@ -13,6 +13,9 @@ import { type HatType } from '../../core/src/components/hats/Hat.vue';
 import { type MouthType } from '../../core/src/components/mouths/Mouth.vue';
 import { randomizeOptions } from '~/utils/random';
 
+const MIN_SIZE = 8;
+const MAX_SIZE = 800;
+
 const toast = useToast()
 
 type BeanheadOptions = {
@@ -135,11 +138,11 @@ const tempSize = ref('250')
 const { pause, resume} = syncRefs(() => options.size, tempSize)
 
 function applySize() {
-  if (Number(tempSize.value) < 8) {
-    tempSize.value = '8'
+  if (Number(tempSize.value) < MIN_SIZE) {
+    tempSize.value = MIN_SIZE.toString()
   }
-  if (Number(tempSize.value) > 300) {
-    tempSize.value = '300'
+  if (Number(tempSize.value) > MAX_SIZE) {
+    tempSize.value = MAX_SIZE.toString()
   }
 
   pause()
@@ -211,11 +214,15 @@ function applySize() {
           min-h-[15.625rem]
           max-h-[18.75rem]
           flex-shrink-0
+          overflow-auto
           md:min-h-none
           md:max-h-none
           md:flex-grow
         ">
-          <div ref="avatarWrapper">
+          <div 
+            ref="avatarWrapper"
+            class="max-h-full"
+          >
             <Beanhead
               :width="options.size"
               :height="options.size"
@@ -266,13 +273,16 @@ function applySize() {
         >
           <div class="flex flex-col gap-6">
             <div>
-              <h3 class="text-base font-semibold mb-2">Size</h3>
+              <h3 class="text-base font-semibold mb-1">Size</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mb-2 leading-4">
+                Size controls the width of the SVG avatar in pixels.
+              </p>
               <div class="flex gap-2 items-center">
                 <URange 
                   :model-value="Number(options.size)"
                   @update:model-value="options.size = $event.toString()"
-                  :min="8"
-                  :max="300"
+                  :min="MIN_SIZE"
+                  :max="MAX_SIZE"
                   class="flex-grow"
                 />
                 <UInput 
