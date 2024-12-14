@@ -11,7 +11,13 @@ import { Beanhead } from 'beanheads-vue'
 <\/script>
 
 <template>
-  <Beanhead />
+  <!-- With explicit width -->
+  <Beanhead width="100"/>
+  
+  <!-- Without width - will fill parent container -->
+  <div style="width: 100px;">
+    <Beanhead/>
+  </div>
 <\/template>`
 ]
 </script>
