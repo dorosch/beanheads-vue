@@ -48,7 +48,7 @@ export function randomizeOptions() {
   const clothingColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
 
   // Randomly pick clothing graphic
-  const clothingGraphic = ['none', 'redwood', 'vue', 'react', 'gatsby', 'graphql'][Math.floor(Math.random() * 6)] as ClothingGraphicType
+  const clothingGraphic = ['none', 'vue', 'nuxt', 'redwood', 'react', 'gatsby', 'graphql'][Math.floor(Math.random() * 7)] as ClothingGraphicType
 
   // Randomly pick accessory
   const accessory = ['none', 'round-glasses', 'tiny-glasses', 'shades'][Math.floor(Math.random() * 4)] as AccessoryType
