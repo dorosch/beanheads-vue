@@ -543,8 +543,9 @@ function applySize() {
                   v-model="options.clothingGraphic" 
                   :options="[
                     { label: 'None', value: 'none' },
-                    { label: 'Redwood', value: 'redwood' },
                     { label: 'Vue', value: 'vue' },
+                    { label: 'Nuxt', value: 'nuxt' },
+                    { label: 'Redwood', value: 'redwood' },
                     { label: 'React', value: 'react' },
                     { label: 'Gatsby', value: 'gatsby' },
                     { label: 'GraphQL', value: 'graphql' },

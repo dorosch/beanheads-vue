@@ -5,8 +5,9 @@ import Vue from './Vue.vue';
 import React from './React.vue';
 import Gatsby from './Gatsby.vue';
 import GraphQL from './GraphQL.vue';
+import Nuxt from './Nuxt.vue';
 
-export type ClothingGraphicType = 'none' | 'redwood' | 'vue' | 'react' | 'gatsby' | 'graphql';
+export type ClothingGraphicType = 'none' | 'redwood' | 'vue' | 'react' | 'gatsby' | 'graphql' | 'nuxt';
 
 const props = defineProps<{
   type: ClothingGraphicType
@@ -20,6 +21,7 @@ const clothingGraphicComponent = computed(() => {
     'react': React,
     'gatsby': Gatsby,
     'graphql': GraphQL,
+    'nuxt': Nuxt,
   }[props.type];
 });
 </script>
