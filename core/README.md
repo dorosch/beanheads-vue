@@ -1,6 +1,6 @@
 # beanheads-vue
 
-Easily generate avatars for your projects with BeanHeads Vue.
+Easily generate avatars for your Vue and Nuxt projects with Beanheads Vue.
 
 > This project is a Vue version inspired by RobertBroersma's React project, [Beanheads](https://github.com/RobertBroersma/beanheads). We deeply respect and appreciate the original work.
 

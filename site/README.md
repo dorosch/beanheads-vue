@@ -4,5 +4,5 @@
   <img alt="Beanheads Vue Generator" src="../demo/website.png"/>
 </p>
 
-Easily generate avatars for your projects with [Beanheads Vue Generator](https://beanheads-vue.heunsig.com/).
+Easily generate avatars for Vue and Nuxt projects with [Beanheads Vue Generator](https://beanheads-vue.heunsig.com/).
 
