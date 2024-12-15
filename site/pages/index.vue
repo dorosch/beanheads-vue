@@ -368,8 +368,9 @@ import { Beanhead } from 'beanheads-vue'
               <td>
                 <div class="flex flex-wrap gap-1">
                   <code>"none"</code>
-                  <code>"redwood"</code>
                   <code>"vue"</code>
+                  <code>"nuxt"</code>
+                  <code>"redwood"</code>
                   <code>"react"</code>
                   <code>"gatsby"</code>
                   <code>"graphql"</code>
