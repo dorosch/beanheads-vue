@@ -114,7 +114,14 @@ const code = computed(() => (`<Beanhead
   :face-mask="${options.faceMask === 'true'}"
   face-mask-color="${options.faceMaskColor}"
 />`))
-const html = highlighter.highlight(code.value, { lang: 'vue', theme: 'github-light-default' })
+
+const html = ref(highlighter.highlight(code.value, { lang: 'vue', theme: 'github-light-default' })) 
+watch(isOpen, () => {
+  if (isOpen.value) {
+    html.value = highlighter.highlight(code.value, { lang: 'vue', theme: 'github-light-default' })
+  }
+})
+
 
 
 function copyCode() {
