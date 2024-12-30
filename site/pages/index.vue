@@ -2,7 +2,7 @@
 import { Beanhead } from 'beanheads-vue'
 import { randomizeOptions } from '~/utils/random';
 
-const options = ref(randomizeOptions())
+const options = useState('avatar', () => randomizeOptions())
 
 const codes = [
   `npm install beanheads-vue`,
@@ -66,45 +66,37 @@ import { Beanhead } from 'beanheads-vue'
       >
         <template #header>
           <div class="flex justify-center">
-            <ClientOnly>
-              <NuxtLink 
-                :to="{
-                  path: '/generator',
-                  query: {
-                    size: '300',
-                    ...options,
-                  },
-                }"
-                class="inline-flex w-[12.5rem] h-[12.5rem]"
-              >
-                <Beanhead
-                  :skin="options.skin"
-                  :body="options.body"
-                  :eye="options.eye"
-                  :with-lashes="options.withLashes === 'true'"
-                  :eyebrows="options.eyebrows"
-                  :mouth="options.mouth"
-                  :lip-color="options.lipColor"
-                  :facial-hair="options.facialHair"
-                  :hair="options.hair"
-                  :hair-color="options.hairColor"
-                  :clothing="options.clothing"
-                  :clothing-color="options.clothingColor"
-                  :clothing-graphic="options.clothingGraphic"
-                  :hat="options.hat"
-                  :hat-color="options.hatColor"
-                  :accessory="options.accessory"
-                  :face-mask="options.faceMask === 'true'"
-                  :face-mask-color="options.faceMaskColor"
-                />
-              </NuxtLink>
-
-              <template #fallback>
-                <div class="h-[12.5rem]">
-                  <svg class="inset-0 h-full w-full stroke-gray-900/10 dark:stroke-white/10" fill="none"><defs><pattern id="pattern-5c1e4f0e-62d5-498b-8ff0-cf77bb448c8e" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M-3 13 15-5M-5 5l18-18M-1 21 17 3"></path></pattern></defs><rect stroke="none" fill="url(#pattern-5c1e4f0e-62d5-498b-8ff0-cf77bb448c8e)" width="100%" height="100%"></rect></svg>
-                </div>
-              </template>
-            </ClientOnly>
+            <NuxtLink 
+              :to="{
+                path: '/generator',
+                query: {
+                  size: '300',
+                  ...options,
+                },
+              }"
+              class="inline-flex w-[12.5rem] h-[12.5rem]"
+            >
+              <Beanhead
+                :skin="options.skin"
+                :body="options.body"
+                :eye="options.eye"
+                :with-lashes="options.withLashes === 'true'"
+                :eyebrows="options.eyebrows"
+                :mouth="options.mouth"
+                :lip-color="options.lipColor"
+                :facial-hair="options.facialHair"
+                :hair="options.hair"
+                :hair-color="options.hairColor"
+                :clothing="options.clothing"
+                :clothing-color="options.clothingColor"
+                :clothing-graphic="options.clothingGraphic"
+                :hat="options.hat"
+                :hat-color="options.hatColor"
+                :accessory="options.accessory"
+                :face-mask="options.faceMask === 'true'"
+                :face-mask-color="options.faceMaskColor"
+              />
+            </NuxtLink>
           </div>
         </template>
 
