@@ -1,7 +1,7 @@
 {
   "name": "beanheads-monorepo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Easily generate avatars for your Vue and Nuxt projects with Beanheads Vue.",
   "main": "index.js",
   "scripts": {
     "core": "pnpm --filter beanheads-vue",
