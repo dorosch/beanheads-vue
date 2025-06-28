@@ -125,6 +125,19 @@ ${props.join('\n')}
               size="lg"
             ></UButton>
           </a>
+
+          <a 
+            href="https://www.npmjs.com/package/beanheads-vue"
+            title="npm"
+            target="_blank"
+          >
+            <UButton 
+              icon="i-simple-icons:npm"
+              color="gray" 
+              variant="ghost"
+              size="lg"
+            ></UButton>
+          </a>
         </div>
       </div>
       <UCard 
