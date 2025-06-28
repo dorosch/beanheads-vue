@@ -20,6 +20,78 @@ import { Beanhead } from 'beanheads-vue'
   </div>
 <\/template>`
 ]
+
+const exampleOptions = useState('example', () => randomizeOptions())
+const exampleCode = computed(() => {
+  const props = []
+  
+  if (exampleOptions.value.skin !== 'light') {
+    props.push(`      skin="${exampleOptions.value.skin}"`)
+  }
+  if (exampleOptions.value.body !== 'chest') {
+    props.push(`      body="${exampleOptions.value.body}"`)
+  }
+  if (exampleOptions.value.eye !== 'normal-eyes') {
+    props.push(`      eye="${exampleOptions.value.eye}"`)
+  }
+  if (exampleOptions.value.withLashes === 'true') {
+    props.push(`      with-lashes`)
+  }
+  if (exampleOptions.value.eyebrows !== 'none') {
+    props.push(`      eyebrows="${exampleOptions.value.eyebrows}"`)
+  }
+  if (exampleOptions.value.mouth !== 'grin') {
+    props.push(`      mouth="${exampleOptions.value.mouth}"`)
+  }
+  if (exampleOptions.value.lipColor !== 'red') {
+    props.push(`      lip-color="${exampleOptions.value.lipColor}"`)
+  }
+  if (exampleOptions.value.facialHair !== 'none') {
+    props.push(`      facial-hair="${exampleOptions.value.facialHair}"`)
+  }
+  if (exampleOptions.value.hair !== 'none') {
+    props.push(`      hair="${exampleOptions.value.hair}"`)
+  }
+  if (exampleOptions.value.hairColor !== 'blonde') {
+    props.push(`      hair-color="${exampleOptions.value.hairColor}"`)
+  }
+  if (exampleOptions.value.clothing !== 'none') {
+    props.push(`      clothing="${exampleOptions.value.clothing}"`)
+  }
+  if (exampleOptions.value.clothingColor !== 'white') {
+    props.push(`      clothing-color="${exampleOptions.value.clothingColor}"`)
+  }
+  if (exampleOptions.value.clothingGraphic !== 'none') {
+    props.push(`      clothing-graphic="${exampleOptions.value.clothingGraphic}"`)
+  }
+  if (exampleOptions.value.accessory !== 'none') {
+    props.push(`      accessory="${exampleOptions.value.accessory}"`)
+  }
+  if (exampleOptions.value.hat !== 'none') {
+    props.push(`      hat="${exampleOptions.value.hat}"`)
+  }
+  if (exampleOptions.value.hatColor !== 'white') {
+    props.push(`      hat-color="${exampleOptions.value.hatColor}"`)
+  }
+  if (exampleOptions.value.faceMask === 'true') {
+    props.push(`      face-mask`)
+  }
+  if (exampleOptions.value.faceMaskColor !== 'white') {
+    props.push(`      face-mask-color="${exampleOptions.value.faceMaskColor}"`)
+  }
+
+  return `<script setup>
+import { Beanhead } from 'beanheads-vue'
+<\/script>
+
+<template>
+  <div style="width: 200px;">
+    <Beanhead
+${props.join('\n')}
+    />
+  </div>
+<\/template>`
+})
 </script>
 <template>
   <main class="px-4 md:px-0">
@@ -120,6 +192,46 @@ import { Beanhead } from 'beanheads-vue'
           lang="vue" 
           :code="codes[1]"
         />
+      </div>
+    </div>
+    <div class="mx-auto py-8 md:w-[50rem] md:py-10">
+      <h2 class="text-2xl font-bold mb-4">Example</h2>
+      <p class="mb-4">Here's a complete example showing how to create a customized character:</p>
+      
+      <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+        <!-- Character Preview -->
+        <div class="flex-shrink-0 bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-6">
+          <div class="w-[12.5rem]">
+            <Beanhead
+              :skin="exampleOptions.skin"
+              :body="exampleOptions.body"
+              :eye="exampleOptions.eye"
+              :with-lashes="exampleOptions.withLashes === 'true'"
+              :eyebrows="exampleOptions.eyebrows"
+              :mouth="exampleOptions.mouth"
+              :lip-color="exampleOptions.lipColor"
+              :facial-hair="exampleOptions.facialHair"
+              :hair="exampleOptions.hair"
+              :hair-color="exampleOptions.hairColor"
+              :clothing="exampleOptions.clothing"
+              :clothing-color="exampleOptions.clothingColor"
+              :clothing-graphic="exampleOptions.clothingGraphic"
+              :hat="exampleOptions.hat"
+              :hat-color="exampleOptions.hatColor"
+              :accessory="exampleOptions.accessory"
+              :face-mask="exampleOptions.faceMask === 'true'"
+              :face-mask-color="exampleOptions.faceMaskColor"
+            />
+          </div>
+        </div>
+        
+        <!-- Code Example -->
+        <div class="flex-grow min-w-0 bg-gray-100 p-4 rounded-lg overflow-auto w-full md:w-auto">
+          <Shiki 
+            lang="vue" 
+            :code="exampleCode"
+          />
+        </div>
       </div>
     </div>
     <div class="mx-auto py-8 md:w-[50rem] md:py-10">
