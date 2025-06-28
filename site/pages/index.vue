@@ -314,6 +314,9 @@ import { Beanhead } from 'beanheads-vue'
                   <code>"brown"</code>
                   <code>"blue"</code>
                   <code>"pink"</code>
+                  <code>"green"</code>
+                  <code>"red"</code>
+                  <code>"purple"</code>
                 </div>
               </td>
               <td>
