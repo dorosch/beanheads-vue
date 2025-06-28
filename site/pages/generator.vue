@@ -505,6 +505,18 @@ function applySize() {
                   <input type="radio" value="pink" v-model="options.hairColor" class="hidden" />
                   <div class="w-8 h-8 rounded-full bg-[#D69AC7] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
+                <label>
+                  <input type="radio" value="green" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#4AB749] border-2 border-gray-600 dark:border-gray-100"></div>
+                </label>
+                <label>
+                  <input type="radio" value="red" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#DD3E3E] border-2 border-gray-600 dark:border-gray-100"></div>
+                </label>
+                <label>
+                  <input type="radio" value="purple" v-model="options.hairColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#B256A1] border-2 border-gray-600 dark:border-gray-100"></div>
+                </label>
               </div>
             </div>
             <div>

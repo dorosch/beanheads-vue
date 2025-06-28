@@ -54,6 +54,18 @@ export const colors = {
       base: '#D69AC7',
       shadow: '#C683B4',
     },
+    green: {
+      base: '#4AB749',
+      shadow: '#3CA047',
+    },
+    red: {
+      base: '#DD3E3E',
+      shadow: '#C43333',
+    },
+    purple: {
+      base: '#B256A1',
+      shadow: '#9C4490',
+    },
   },
   lipColors: {
     red: {

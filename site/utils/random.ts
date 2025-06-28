@@ -39,7 +39,7 @@ export function randomizeOptions() {
   const hair = ['none', 'afro', 'balding', 'bob', 'bun', 'buzz', 'long', 'pixie', 'short'][Math.floor(Math.random() * 9)] as HairType 
 
   // Randomly pick hair color
-  const hairColor = ['blonde', 'orange', 'black', 'white', 'brown', 'blue', 'pink'][Math.floor(Math.random() * 7)] as keyof typeof colors.hair
+  const hairColor = ['blonde', 'orange', 'black', 'white', 'brown', 'blue', 'pink', 'green', 'red', 'purple'][Math.floor(Math.random() * 10)] as keyof typeof colors.hair
 
   // Randomly pick clothing
   const clothing = ['none', 'dress', 'dress-shirt', 'shirt', 'tank-top', 'v-neck'][Math.floor(Math.random() * 6)] as ClothingType
