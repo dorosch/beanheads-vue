@@ -194,7 +194,7 @@ function applySize() {
         </NuxtLink>
         <div class="flex flex-wrap items-baseline gap-x-2">
           <h1 class="text-lg font-bold text-gray-800 dark:text-gray-200">Beanheads Vue</h1>
-          <small class="text-sm text-gray-500">v1.0.0</small>
+          <small class="text-sm text-gray-500">v1.1.0</small>
         </div>
         <div class="ml-auto flex-shrink-0 flex justify-end gap-2">
           <a 

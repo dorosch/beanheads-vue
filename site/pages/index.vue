@@ -27,7 +27,7 @@ import { Beanhead } from 'beanheads-vue'
       <div class="contents flex-grow md:flex md:flex-col md:justify-center">
         <div class="w-full flex items-baseline gap-x-2 mb-2">
           <h1 class="text-2xl md:text-3xl font-bold">Beanheads Vue</h1>
-          <small class="text-sm text-gray-500">v1.0.0</small>
+          <small class="text-sm text-gray-500">v1.1.0</small>
         </div>
         <p class="text-lg md:text-xl mb-4">Create billions of unique characters by mixing and matching colors, hairstyles, and clothing.</p>
         <div class="flex items-center gap-2 order-last mt-6 md:mt-0">
