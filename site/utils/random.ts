@@ -10,62 +10,116 @@ import type { HatType } from "../../core/src/components/hats/Hat.vue"
 import type { MouthType } from "../../core/src/components/mouths/Mouth.vue"
 import type { colors } from "../../core/src/constants/theme"
 
-export function randomizeOptions() {
+export type BeanheadProperty = 'skin' | 'body' | 'eye' | 'withLashes' | 'eyebrows' | 'mouth' | 'lipColor' | 'facialHair' | 'hair' | 'hairColor' | 'clothing' | 'clothingColor' | 'clothingGraphic' | 'accessory' | 'hat' | 'hatColor' | 'faceMask' | 'faceMaskColor'
+
+export function randomizeOptions(excludeProperties: BeanheadProperty[] = []) {
+  const result: Record<string, any> = {}
+
   // Randomly pick skin tone
-  const skin = ['light', 'dark', 'yellow', 'brown', 'red', 'black'][Math.floor(Math.random() * 6)] as keyof typeof colors.skin
+  if (!excludeProperties.includes('skin')) {
+    const options = ['light', 'dark', 'yellow', 'brown', 'red', 'black']  
+    result.skin = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.skin
+  }
 
   // Randomly pick body type
-  const body = ['chest', 'breasts'][Math.floor(Math.random() * 2)] as BodyType
+  if (!excludeProperties.includes('body')) {
+    const options = ['chest', 'breasts']
+    result.body = options[Math.floor(Math.random() * options.length)] as BodyType
+  }
 
   // Randomly pick eye type
-  const eye = ['normal-eyes', 'content-eyes', 'dizzy-eyes', 'happy-eyes', 'heart-eyes', 'left-twitch-eyes'][Math.floor(Math.random() * 6)] as EyeType
+  if (!excludeProperties.includes('eye')) {
+    const options = ['normal-eyes', 'content-eyes', 'dizzy-eyes', 'happy-eyes', 'heart-eyes', 'left-twitch-eyes']
+    result.eye = options[Math.floor(Math.random() * options.length)] as EyeType
+  }
 
   // Randomly pick eyelashes
-  const withLashes = Math.random() < 0.5 ? 'true' : 'false'
+  if (!excludeProperties.includes('withLashes')) {
+    result.withLashes = Math.random() < 0.5 ? 'true' : 'false'
+  }
 
   // Randomly pick eyebrows
-  const eyebrows = ['none', 'normal', 'serious', 'left-lowered', 'angry', 'concerned'][Math.floor(Math.random() * 6)] as EyebrowsType
+  if (!excludeProperties.includes('eyebrows')) {
+    const options = ['none', 'normal', 'serious', 'left-lowered', 'angry', 'concerned']
+    result.eyebrows = options[Math.floor(Math.random() * options.length)] as EyebrowsType
+  }
 
   // Randomly pick mouth
-  const mouth = ['grin', 'sad', 'serious', 'open', 'tongue'][Math.floor(Math.random() * 5)] as MouthType
+  if (!excludeProperties.includes('mouth')) {
+    const options = ['grin', 'sad', 'serious', 'open', 'tongue']
+    result.mouth = options[Math.floor(Math.random() * options.length)] as MouthType
+  }
 
   // Randomly pick lip color
-  const lipColor = ['red', 'purple', 'pink', 'turquoise', 'green'][Math.floor(Math.random() * 5)] as keyof typeof colors.lipColors
+  if (!excludeProperties.includes('lipColor')) {
+    const options = ['red', 'purple', 'pink', 'turquoise', 'green']
+    result.lipColor = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.lipColors
+  }
 
   // Randomly pick facial hair
-  const facialHair = ['none', 'stubble', 'medium-beard'][Math.floor(Math.random() * 3)] as FacialHairType 
+  if (!excludeProperties.includes('facialHair')) {
+    const options = ['none', 'stubble', 'medium-beard']
+    result.facialHair = options[Math.floor(Math.random() * options.length)] as FacialHairType 
+  }
 
   // Randomly pick hair style
-  const hair = ['none', 'afro', 'balding', 'bob', 'bun', 'buzz', 'long', 'pixie', 'short'][Math.floor(Math.random() * 9)] as HairType 
+  if (!excludeProperties.includes('hair')) {
+    const options = ['none', 'afro', 'balding', 'bob', 'bun', 'buzz', 'long', 'pixie', 'short']
+    result.hair = options[Math.floor(Math.random() * options.length)] as HairType 
+  }
 
   // Randomly pick hair color
-  const hairColor = ['blonde', 'orange', 'black', 'white', 'brown', 'blue', 'pink', 'green', 'red', 'purple'][Math.floor(Math.random() * 10)] as keyof typeof colors.hair
+  if (!excludeProperties.includes('hairColor')) {
+    const options = ['blonde', 'orange', 'black', 'white', 'brown', 'blue', 'pink', 'green', 'red', 'purple']
+    result.hairColor = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.hair
+  }
 
   // Randomly pick clothing
-  const clothing = ['none', 'dress', 'dress-shirt', 'shirt', 'tank-top', 'v-neck'][Math.floor(Math.random() * 6)] as ClothingType
+  if (!excludeProperties.includes('clothing')) {
+    const options = ['none', 'dress', 'dress-shirt', 'shirt', 'tank-top', 'v-neck']
+    result.clothing = options[Math.floor(Math.random() * options.length)] as ClothingType
+  }
 
   // Randomly pick clothing color
-  const clothingColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
+  if (!excludeProperties.includes('clothingColor')) {
+    const options = ['white', 'blue', 'black', 'green', 'red']
+    result.clothingColor = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.clothing
+  }
 
   // Randomly pick clothing graphic
-  const clothingGraphic = ['none', 'vue', 'nuxt', 'redwood', 'react', 'gatsby', 'graphql'][Math.floor(Math.random() * 7)] as ClothingGraphicType
+  if (!excludeProperties.includes('clothingGraphic')) {
+    const options = ['none', 'vue', 'nuxt', 'redwood', 'react', 'gatsby', 'graphql']
+    result.clothingGraphic = options[Math.floor(Math.random() * options.length)] as ClothingGraphicType
+  }
 
   // Randomly pick accessory
-  const accessory = ['none', 'round-glasses', 'tiny-glasses', 'shades'][Math.floor(Math.random() * 4)] as AccessoryType
+  if (!excludeProperties.includes('accessory')) {
+    const options = ['none', 'round-glasses', 'tiny-glasses', 'shades']
+    result.accessory = options[Math.floor(Math.random() * options.length)] as AccessoryType
+  }
 
   // Randomly pick hat
-  const hat = ['none', 'beanie', 'turban'][Math.floor(Math.random() * 3)] as HatType
+  if (!excludeProperties.includes('hat')) {
+    const options = ['none', 'beanie', 'turban']
+    result.hat = options[Math.floor(Math.random() * options.length)] as HatType
+  }
 
   // Randomly pick hat color
-  const hatColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
+  if (!excludeProperties.includes('hatColor')) {
+    const options = ['white', 'blue', 'black', 'green', 'red']
+    result.hatColor = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.clothing
+  }
 
   // Randomly pick face mask
-  const faceMask = Math.random() < 0.5 ? 'true' : 'false'
+  if (!excludeProperties.includes('faceMask')) {
+    result.faceMask = Math.random() < 0.5 ? 'true' : 'false'
+  }
 
   // Randomly pick face mask color
-  const faceMaskColor = ['white', 'blue', 'black', 'green', 'red'][Math.floor(Math.random() * 5)] as keyof typeof colors.clothing
-
-  return {
-    skin, body, eye, withLashes, eyebrows, mouth, lipColor, facialHair, hair, hairColor, clothing, clothingColor, clothingGraphic, accessory, hat, hatColor, faceMask, faceMaskColor
+  if (!excludeProperties.includes('faceMaskColor')) {
+    const options = ['white', 'blue', 'black', 'green', 'red']
+    result.faceMaskColor = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.clothing
   }
+
+  return result
 }
