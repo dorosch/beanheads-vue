@@ -101,6 +101,10 @@ function resetAvatar() {
   Object.assign(options, structuredClone(initialOptions))
 }
 
+function unlockAll() {
+  lockedProperties.value.clear()
+}
+
 const highlighter = await getShikiHighlighter()
 const isOpen = ref(false)
 const code = computed(() => (`<Beanhead
@@ -329,6 +333,7 @@ function applySize() {
                 @update:model-value="options.mask = $event ? 'true' : 'false'"
                 class="mr-auto"
               />
+
               <!-- Reset Avatar -->
               <UButton 
                 type="button" 
@@ -343,6 +348,20 @@ function applySize() {
                 @click="() => randomizeAvatar()"
               >
                 Randomize
+              </UButton>
+            </div>
+            <div class="flex justify-end">
+              <UButton
+                v-if="lockedProperties.size > 0"
+                type="button" 
+                variant="outline"
+                color="orange"
+                icon="i-heroicons-lock-open"
+                @click="() => unlockAll()"
+                title="Unlock all properties"
+                class="w-full justify-center"
+              >
+                Unlock All
               </UButton>
             </div>
             <div>
