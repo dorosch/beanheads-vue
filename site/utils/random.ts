@@ -82,7 +82,7 @@ export function randomizeOptions(excludeProperties: BeanheadProperty[] = []) {
 
   // Randomly pick clothing color
   if (!excludeProperties.includes('clothingColor')) {
-    const options = ['white', 'blue', 'black', 'green', 'red']
+    const options = ['white', 'blue', 'black', 'green', 'red', 'pink']
     result.clothingColor = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.clothing
   }
 
@@ -106,7 +106,7 @@ export function randomizeOptions(excludeProperties: BeanheadProperty[] = []) {
 
   // Randomly pick hat color
   if (!excludeProperties.includes('hatColor')) {
-    const options = ['white', 'blue', 'black', 'green', 'red']
+    const options = ['white', 'blue', 'black', 'green', 'red', 'pink']
     result.hatColor = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.clothing
   }
 
@@ -117,7 +117,7 @@ export function randomizeOptions(excludeProperties: BeanheadProperty[] = []) {
 
   // Randomly pick face mask color
   if (!excludeProperties.includes('faceMaskColor')) {
-    const options = ['white', 'blue', 'black', 'green', 'red']
+    const options = ['white', 'blue', 'black', 'green', 'red', 'pink']
     result.faceMaskColor = options[Math.floor(Math.random() * options.length)] as keyof typeof colors.clothing
   }
 

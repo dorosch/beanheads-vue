@@ -198,7 +198,7 @@ function applySize() {
         </NuxtLink>
         <div class="flex flex-wrap items-baseline gap-x-2">
           <h1 class="text-lg font-bold text-gray-800 dark:text-gray-200">Beanheads Vue</h1>
-          <small class="text-sm text-gray-500">v1.1.0</small>
+          <small class="text-sm text-gray-500">v1.2.0</small>
         </div>
         <div class="ml-auto flex-shrink-0 flex justify-end gap-2">
           <a 
@@ -710,6 +710,10 @@ function applySize() {
                   <input type="radio" value="red" v-model="options.clothingColor" class="hidden"/>
                   <div class="w-8 h-8 rounded-full bg-[#d67070] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
+                <label>
+                  <input type="radio" value="pink" v-model="options.clothingColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#E8A5C8] border-2 border-gray-600 dark:border-gray-100"></div>
+                </label>
               </div>
             </div>
             <div>
@@ -822,6 +826,10 @@ function applySize() {
                   <input type="radio" value="red" v-model="options.hatColor" class="hidden"/>
                   <div class="w-8 h-8 rounded-full bg-[#d67070] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
+                <label>
+                  <input type="radio" value="pink" v-model="options.hatColor" class="hidden"/>
+                  <div class="w-8 h-8 rounded-full bg-[#E8A5C8] border-2 border-gray-600 dark:border-gray-100"></div>
+                </label>
               </div>
             </div>
             <div>
@@ -876,6 +884,10 @@ function applySize() {
                 <label>
                   <input type="radio" value="red" v-model="options.faceMaskColor" class="hidden" />
                   <div class="w-8 h-8 rounded-full bg-[#d67070] border-2 border-gray-600 dark:border-gray-100"></div>
+                </label>
+                <label>
+                  <input type="radio" value="pink" v-model="options.faceMaskColor" class="hidden" />
+                  <div class="w-8 h-8 rounded-full bg-[#E8A5C8] border-2 border-gray-600 dark:border-gray-100"></div>
                 </label>
               </div>
             </div>
