@@ -110,6 +110,10 @@ export const colors = {
       base: '#D67070',
       shadow: '#C46565',
     },
+    pink: {
+      base: '#E8A5C8',
+      shadow: '#D18FB5',
+    },
   },
   bgColors: {
     blue: '#85c5e5',
