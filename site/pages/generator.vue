@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Beanhead } from 'beanheads-vue'
 import { colors } from '../../core/src/constants/theme'
+import { useCoreVersion } from '~/composables/useCoreVersion';
 import { type AccessoryType } from '../../core/src/components/accessories/Accessory.vue';
 import { type BodyType } from '../../core/src/components/bodies/Body.vue';
 import { type ClothingType } from '../../core/src/components/clothings/Clothing.vue';
@@ -12,6 +13,8 @@ import { type HairType } from '../../core/src/components/hairs/Hair.vue';
 import { type HatType } from '../../core/src/components/hats/Hat.vue';
 import { type MouthType } from '../../core/src/components/mouths/Mouth.vue';
 import { randomizeOptions, type BeanheadProperty } from '~/utils/random';
+
+const { version } = useCoreVersion()
 
 const MIN_SIZE = 8;
 const MAX_SIZE = 800;
@@ -198,7 +201,7 @@ function applySize() {
         </NuxtLink>
         <div class="flex flex-wrap items-baseline gap-x-2">
           <h1 class="text-lg font-bold text-gray-800 dark:text-gray-200">Beanheads Vue</h1>
-          <small class="text-sm text-gray-500">v1.2.0</small>
+          <small class="text-sm text-gray-500">v{{ version }}</small>
         </div>
         <div class="ml-auto flex-shrink-0 flex justify-end gap-2">
           <a 
