@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { Beanhead } from 'beanheads-vue'
-import { colors } from '../../core/src/constants/theme'
+import { 
+  Beanhead, 
+  colors,
+  type AccessoryType,
+  type BodyType,
+  type ClothingType,
+  type ClothingGraphicType,
+  type EyeType,
+  type EyebrowsType,
+  type FacialHairType,
+  type HairType,
+  type HatType,
+  type MouthType
+} from 'beanheads-vue'
 import { useCoreVersion } from '~/composables/useCoreVersion';
-import { type AccessoryType } from '../../core/src/components/accessories/Accessory.vue';
-import { type BodyType } from '../../core/src/components/bodies/Body.vue';
-import { type ClothingType } from '../../core/src/components/clothings/Clothing.vue';
-import { type ClothingGraphicType } from '../../core/src/components/clothingGraphics/ClothingGraphic.vue';
-import { type EyeType } from '../../core/src/components/eyes/Eye.vue';
-import { type EyebrowsType } from '../../core/src/components/eyebrows/Eyebrows.vue';
-import { type FacialHairType } from '../../core/src/components/facialHairs/FacialHair.vue';
-import { type HairType } from '../../core/src/components/hairs/Hair.vue';
-import { type HatType } from '../../core/src/components/hats/Hat.vue';
-import { type MouthType } from '../../core/src/components/mouths/Mouth.vue';
 import { randomizeOptions, type BeanheadProperty } from '~/utils/random';
 
 const { version } = useCoreVersion()

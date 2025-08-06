@@ -20,3 +20,5 @@ type FaceMaskColor = ClothingColor;
 type LipColor = keyof typeof colors.lipColors;
 
 export type { SkinColor, HairColor, ClothingColor, HatColor, FaceMaskColor, LipColor }
+
+export { colors }

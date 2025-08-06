@@ -1,14 +1,16 @@
-import type { AccessoryType } from "../../core/src/components/accessories/Accessory.vue"
-import type { BodyType } from "../../core/src/components/bodies/Body.vue"
-import type { ClothingGraphicType } from "../../core/src/components/clothingGraphics/ClothingGraphic.vue"
-import type { ClothingType } from "../../core/src/components/clothings/Clothing.vue"
-import type { EyebrowsType } from "../../core/src/components/eyebrows/Eyebrows.vue"
-import type { EyeType } from "../../core/src/components/eyes/Eye.vue"
-import type { FacialHairType } from "../../core/src/components/facialHairs/FacialHair.vue"
-import type { HairType } from "../../core/src/components/hairs/Hair.vue"
-import type { HatType } from "../../core/src/components/hats/Hat.vue"
-import type { MouthType } from "../../core/src/components/mouths/Mouth.vue"
-import type { colors } from "../../core/src/constants/theme"
+import { 
+  colors,
+  type AccessoryType,
+  type BodyType,
+  type ClothingType,
+  type ClothingGraphicType,
+  type EyeType,
+  type EyebrowsType,
+  type FacialHairType,
+  type HairType,
+  type HatType,
+  type MouthType
+} from 'beanheads-vue'
 
 export type BeanheadProperty = 'skin' | 'body' | 'eye' | 'withLashes' | 'eyebrows' | 'mouth' | 'lipColor' | 'facialHair' | 'hair' | 'hairColor' | 'clothing' | 'clothingColor' | 'clothingGraphic' | 'accessory' | 'hat' | 'hatColor' | 'faceMask' | 'faceMaskColor'
 
