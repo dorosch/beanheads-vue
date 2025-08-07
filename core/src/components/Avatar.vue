@@ -122,9 +122,11 @@ const clothingVisibility = computed(() => ({
 })[props.clothing])
 
 const { setSkin } = useTheme();
+
+setSkin(props.skin)
 watch(() => props.skin, (skin) => {
   setSkin(skin)
-}, { immediate: true })
+})
 </script>
 
 <template>
