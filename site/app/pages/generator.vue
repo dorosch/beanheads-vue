@@ -196,7 +196,7 @@ function applySize() {
             type="button"
             icon="i-heroicons-outline:chevron-left"
             size="sm"
-            color="gray"
+            color="neutral"
             square
             variant="ghost"
           />
@@ -213,7 +213,7 @@ function applySize() {
           >
             <UButton 
               icon="i-mdi:github"
-              color="gray" 
+              color="neutral"
               variant="ghost"
             ></UButton>
           </a>
@@ -221,7 +221,7 @@ function applySize() {
           <UButton
             icon="i-heroicons-outline:download"
             size="sm"
-            color="gray"
+            color="neutral"
             square
             variant="ghost"
             class="flex-shrink-0"
@@ -231,12 +231,14 @@ function applySize() {
           <UButton
             icon="i-heroicons:code-bracket-16-solid"
             size="sm"
-            color="gray"
+            color="neutral"
             square
             variant="ghost"
             class="flex-shrink-0"
             title="Code"
-            @click="() => isOpen = true"
+            @click="() => {
+              isOpen = true;
+            }"
           />
         </div>
       </div>
@@ -312,9 +314,13 @@ function applySize() {
                 Size controls the width and height of the SVG avatar in pixels. ({{ MIN_SIZE }}px - {{ MAX_SIZE }}px)
               </p>
               <div class="flex gap-2 items-center">
-                <URange 
+                <USlider 
                   :model-value="Number(options.size)"
-                  @update:model-value="options.size = $event.toString()"
+                  @update:model-value="(value) => {
+                    if (!Array.isArray(value) && typeof value === 'number') {
+                      options.size = value.toString()
+                    }
+                  }"
                   :min="MIN_SIZE"
                   :max="MAX_SIZE"
                   class="flex-grow"
@@ -360,7 +366,7 @@ function applySize() {
                 v-if="lockedProperties.size > 0"
                 type="button" 
                 variant="outline"
-                color="orange"
+                color="warning"
                 icon="i-heroicons-lock-open"
                 @click="() => unlockAll()"
                 title="Unlock all properties"
@@ -375,7 +381,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('skin') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('skin') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('skin') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('skin')"
                   :title="lockedProperties.has('skin') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -384,7 +390,7 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.skin" 
-                  :options="[
+                  :items="[
                     { label: 'Light', value: 'light' },
                     { label: 'Dark', value: 'dark' },
                     { label: 'Yellow', value: 'yellow' },
@@ -392,7 +398,8 @@ function applySize() {
                     { label: 'Red', value: 'red' },
                     { label: 'Black', value: 'black' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -402,7 +409,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('body') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('body') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('body') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('body')"
                   :title="lockedProperties.has('body') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -410,12 +417,13 @@ function applySize() {
               </div>
               <div>
                 <USelectMenu
-                  v-model="options.body" 
-                  :options="[
+                  v-model="options.body"
+                  :items="[
                     { label: 'Chest', value: 'chest' },
                     { label: 'Breasts', value: 'breasts' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -425,7 +433,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('eye') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('eye') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('eye') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('eye')"
                   :title="lockedProperties.has('eye') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -434,7 +442,7 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.eye" 
-                  :options="[
+                  :items="[
                     { label: 'Normal Eyes', value: 'normal-eyes' },
                     { label: 'Content Eyes', value: 'content-eyes' },
                     { label: 'Dizzy Eyes', value: 'dizzy-eyes' },
@@ -442,7 +450,8 @@ function applySize() {
                     { label: 'Heart Eyes', value: 'heart-eyes' },
                     { label: 'Left Twitch Eyes', value: 'left-twitch-eyes' },
                   ]" 
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -452,14 +461,14 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('withLashes') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('withLashes') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('withLashes') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('withLashes')"
                   :title="lockedProperties.has('withLashes') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
                 />
               </div>
               <div>
-                <UToggle 
+                <USwitch
                   :model-value="options.withLashes === 'true'"
                   @update:model-value="options.withLashes = $event ? 'true' : 'false'"
                   size="xl"
@@ -472,7 +481,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('eyebrows') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('eyebrows') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('eyebrows') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('eyebrows')"
                   :title="lockedProperties.has('eyebrows') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -481,7 +490,7 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.eyebrows" 
-                  :options="[
+                  :items="[
                     { label: 'None', value: 'none' },
                     { label: 'Normal', value: 'normal' },
                     { label: 'Serious', value: 'serious' },
@@ -489,7 +498,8 @@ function applySize() {
                     { label: 'Angry', value: 'angry' },
                     { label: 'Concerned', value: 'concerned' },
                   ]" 
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -499,7 +509,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('mouth') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('mouth') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('mouth') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('mouth')"
                   :title="lockedProperties.has('mouth') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -508,7 +518,7 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.mouth" 
-                  :options="[
+                  :items="[
                     { label: 'Grin', value: 'grin' },
                     { label: 'Lips', value: 'lips' },
                     { label: 'Sad', value: 'sad' },
@@ -516,7 +526,8 @@ function applySize() {
                     { label: 'Open', value: 'open' },
                     { label: 'Tongue', value: 'tongue' },
                   ]" 
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -526,7 +537,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('lipColor') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('lipColor') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('lipColor') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('lipColor')"
                   :title="lockedProperties.has('lipColor') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -535,14 +546,15 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.lipColor" 
-                  :options="[
+                  :items="[
                     { label: 'Red', value: 'red' },
                     { label: 'Purple', value: 'purple' },
                     { label: 'Pink', value: 'pink' },
                     { label: 'Turquoise', value: 'turquoise' },
                     { label: 'Green', value: 'green' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -552,7 +564,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('facialHair') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('facialHair') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('facialHair') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('facialHair')"
                   :title="lockedProperties.has('facialHair') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -561,12 +573,13 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.facialHair" 
-                  :options="[
+                  :items="[
                     { label: 'None', value: 'none' },
                     { label: 'Stubble', value: 'stubble' },
                     { label: 'Medium Beard', value: 'medium-beard' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -576,7 +589,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('hair') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('hair') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('hair') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('hair')"
                   :title="lockedProperties.has('hair') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -585,7 +598,7 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.hair" 
-                  :options="[
+                  :items="[
                     { label: 'None', value: 'none' },
                     { label: 'Afro', value: 'afro' },
                     { label: 'Balding', value: 'balding' },
@@ -596,7 +609,8 @@ function applySize() {
                     { label: 'Pixie', value: 'pixie' },
                     { label: 'Short', value: 'short' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -606,7 +620,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('hairColor') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('hairColor') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('hairColor') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('hairColor')"
                   :title="lockedProperties.has('hairColor') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -661,7 +675,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('clothing') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('clothing') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('clothing') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('clothing')"
                   :title="lockedProperties.has('clothing') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -670,7 +684,7 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.clothing" 
-                  :options="[
+                  :items="[
                     { label: 'Naked', value: 'none' },
                     { label: 'Dress', value: 'dress' },
                     { label: 'Dress Shirt', value: 'dress-shirt' },
@@ -678,7 +692,8 @@ function applySize() {
                     { label: 'Tank Top', value: 'tank-top' },
                     { label: 'V-Neck', value: 'v-neck' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -688,7 +703,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('clothingColor') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('clothingColor') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('clothingColor') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('clothingColor')"
                   :title="lockedProperties.has('clothingColor') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -727,7 +742,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('clothingGraphic') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('clothingGraphic') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('clothingGraphic') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('clothingGraphic')"
                   :title="lockedProperties.has('clothingGraphic') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -736,7 +751,7 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.clothingGraphic" 
-                  :options="[
+                  :items="[
                     { label: 'None', value: 'none' },
                     { label: 'Vue', value: 'vue' },
                     { label: 'Nuxt', value: 'nuxt' },
@@ -745,7 +760,8 @@ function applySize() {
                     { label: 'Gatsby', value: 'gatsby' },
                     { label: 'GraphQL', value: 'graphql' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -755,7 +771,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('accessory') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('accessory') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('accessory') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('accessory')"
                   :title="lockedProperties.has('accessory') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -764,13 +780,14 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.accessory" 
-                  :options="[
+                  :items="[
                     { label: 'None', value: 'none' },
                     { label: 'Round Glasses', value: 'round-glasses' },
                     { label: 'Tiny Glasses', value: 'tiny-glasses' },
                     { label: 'Shades', value: 'shades' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -780,7 +797,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('hat') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('hat') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('hat') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('hat')"
                   :title="lockedProperties.has('hat') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -789,12 +806,13 @@ function applySize() {
               <div>
                 <USelectMenu
                   v-model="options.hat" 
-                  :options="[
+                  :items="[
                     { label: 'None', value: 'none' },
                     { label: 'Beanie', value: 'beanie' },
                     { label: 'Turban', value: 'turban' },
                   ]"
-                  value-attribute="value"
+                  value-key="value"
+                  class="w-full"
                 />
               </div>
             </div>
@@ -804,7 +822,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('hatColor') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('hatColor') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('hatColor') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('hatColor')"
                   :title="lockedProperties.has('hatColor') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -843,14 +861,14 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('faceMask') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('faceMask') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('faceMask') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('faceMask')"
                   :title="lockedProperties.has('faceMask') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
                 />
               </div>
               <div>
-                <UToggle 
+                <USwitch
                   :model-value="options.faceMask === 'true'"
                   @update:model-value="options.faceMask = $event ? 'true' : 'false'"
                   size="xl"
@@ -863,7 +881,7 @@ function applySize() {
                 <UButton
                   :icon="lockedProperties.has('faceMaskColor') ? 'i-heroicons-lock-closed' : 'i-heroicons-lock-open'"
                   size="xs"
-                  :color="lockedProperties.has('faceMaskColor') ? 'orange' : 'gray'"
+                  :color="lockedProperties.has('faceMaskColor') ? 'warning' : 'neutral'"
                   variant="ghost"
                   @click="() => toggleLock('faceMaskColor')"
                   :title="lockedProperties.has('faceMaskColor') ? 'Locked (excluded from randomization)' : 'Unlocked (included in randomization)'"
@@ -901,17 +919,21 @@ function applySize() {
       </div>
     </main>
 
-    <UModal v-model="isOpen">
-      <UButton 
-        icon="i-heroicons-outline:clipboard-copy"
-        size="sm"
-        color="primary"
-        square
-        variant="ghost"
-        class="flex-shrink-0 absolute top-3 right-3"
-        @click="() => copyCode()"
-      />
-      <div class="min-h-24 p-4" v-html="html"/>
+    <UModal
+     v-model:open="isOpen"
+    >
+      <template #content>
+        <UButton 
+          icon="i-heroicons-outline:clipboard-copy"
+          size="sm"
+          color="primary"
+          square
+          variant="ghost"
+          class="flex-shrink-0 absolute top-3 right-3"
+          @click="() => copyCode()"
+        />
+        <div class="min-h-24 p-4" v-html="html"/>
+      </template>
     </UModal>
   </ClientOnly>
 </template>

@@ -123,7 +123,7 @@ ${props.join('\n')}
           >
             <UButton 
               icon="i-mdi:github"
-              color="gray" 
+              color="neutral" 
               variant="ghost"
               size="lg"
             ></UButton>
@@ -136,7 +136,7 @@ ${props.join('\n')}
           >
             <UButton 
               icon="i-simple-icons:npm"
-              color="gray" 
+              color="neutral" 
               variant="ghost"
               size="lg"
             ></UButton>
@@ -146,10 +146,7 @@ ${props.join('\n')}
       <UCard 
         class="w-[18rem] flex-shrink-0"
         :ui="{
-          header: {
-            base: 'pb-0',
-            background: 'bg-[#d3ffcc]',
-          }
+          header: 'pb-0 bg-[#d3ffcc]',
         }"
       >
         <template #header>

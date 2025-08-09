@@ -1,4 +1,5 @@
 <template>
-  <NuxtPage />
-  <UNotifications />
+  <UApp>
+    <NuxtPage />
+  </UApp>
 </template>
