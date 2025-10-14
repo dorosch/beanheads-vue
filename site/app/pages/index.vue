@@ -382,7 +382,7 @@ ${props.join('\n')}
                   <code>"red"</code>
                   <code>"purple"</code>
                   <code>"pink"</code>
-                  <code>"turqoise"</code>
+                  <code>"turquoise"</code>
                   <code>"green"</code>
                 </div>
               </td>
